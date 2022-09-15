@@ -118,7 +118,7 @@ for each of the pauli matrices, so:
 \begin{equation}
     \v{S}^2 \cong \frac{1}{4}(\sigma_x^2 + \sigma_y^2 + \sigma_z^2) = \frac{3}{4}\imatrix.
 \end{equation}
-So with the choice of representation that $\ket{\uparrow} \cong \m{1//0}$ and $\ket{\downarrow} \cong \m{0//1}$, we find:
+So with the choice of representation that $\ket{\uparrow} \cong \m{1 \\ 0}$ and $\ket{\downarrow} \cong \m{0\\ 1}$, we find:
 \begin{equation}
     \v{S}^2\ket{\uparrow} = \frac{3}{4}\ket{\uparrow},
 \end{equation}
@@ -134,11 +134,11 @@ In the spinor representation, it is given by:
 \begin{equation}
     \chi = \m{c_+ \\ c_-}.
 \end{equation}
-How many real parameters are needed to specify the quantum state? Naively, we would say 4 (2 complex numbers). One is reduced by the normalization condition:
+How many real parameters are needed to specify the quantum state? Naively, we would say 4 (2 complex numbers). But it turns out to be only two. One parameter is reduced by the normalization condition:
 \begin{equation}
     \abs{c_+}^2 + \abs{c_-}^2 = 1.
 \end{equation}
-We also have a reduction of one from the fact that the state is physically unchanged when multiplied by a global phase $\ket{\chi} \sim e^{i\phi}\ket{\chi}$. An important note: \emph{relative} phases are observable (e.g. in neutron inferometry experiments), but global ones are not. So in the case of a single qubit/spin 1/2 particle, we can neglect the phase, but when we have multiple particles we cannot neglect relative phases.
+We also have a reduction of one from the fact that the state is physically unchanged when multiplied by a global phase $\ket{\chi} \sim e^{i\phi}\ket{\chi}$; this comes from the fact that we can only measure probabilities in QM, and when we calculate these (using the Born rule, $p(i) = \bra{\psi}\Pi_i\ket{\psi}$ the global phase cancells out). An important distinction: \emph{relative} phases are observable (e.g. in neutron inferometry experiments), while global ones are not. So in the case of a single spin-1/2 particle, we can neglect the phase, but when we have multiple particles we cannot neglect relative phases.
 
 \subsection{Magnetic Hamiltonians}
 Consider the Hamiltonian:
@@ -147,5 +147,5 @@ Consider the Hamiltonian:
 \end{equation}
 Where $\gv{\mu} = \gamma \gv{s}$. This $\gamma$ coefficient cannot be estimated by classical physics; a full calculation requires considering the Dirac field in QFT. But we can also evaluate it via experiment.
 
-Next day, we will continue our discussion fo this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
+Next day, we will continue our discussion of this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
 
