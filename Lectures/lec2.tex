@@ -21,7 +21,7 @@ by orthogonality, and using that $L_{x/y} = (L_+ \pm L_-)/2$ that:
 \subsection{Parity and Pseudovectors}
 It is clear that:
 \begin{equation}
-    \bra{l, m}L_z\ket{l, n} = m.
+    \bra{l, m}L_z\ket{l, m} = m.
 \end{equation}
 We now ask, what is the value of $\bra{l, m}Z\ket{l, m}$ and $\bra{l, m}X\ket{l, m}$? We find that:
 \begin{equation}
@@ -36,7 +36,7 @@ How would we do this rigorously? We will come back to this when we do selection 
 and comparing the first and last expressions we find that the expectation value is zero. However, we may then ask why does the expectation value of $L_z$ not vanish? This is because angular momentum (like torque and magnetic fields) are not vectors, but rather pseudovectors.
 
 \subsection{Parity Spherical harmonics}
-A last note about the eigenkets of angular momentum. In the position basis, we can write them as spherical harmonics:
+Let us take a closer look at how parity is related to eigenkets of angular momentum. In the position basis, we can write them as spherical harmonics:
 \begin{equation}
     \ket{l, m} \cong Y_{l}^m(\theta, \phi).
 \end{equation}
@@ -82,7 +82,7 @@ so we conclude:
 and an analogous computation can be done to find $c_-$.
 
 \subsection{Spin 1/2}
-Because of the degeneracy of angular momentum ($2l+1$) derived via the Schrodinger equation, people expected to always see an odd number of lines when doing energy line experiments. But this turned out not to be true in experimental results; we require a new approach to the theory, developed by Pauli. We now thus explore spin 1/2 systems. For such systems, we have $s = 1/2$, where the spin operators follow the commutation relations:
+Because of the degeneracy of angular momentum ($2l+1$) derived via the Schrodinger equation, people expected to always see an odd number of lines when (e.g.) measuring the energy lines of atoms. But this turned out not to be true in experimental results; this is because not only does angular momentum come in orbital form, but also in an intrinsic form known as spin. This formalism and theory was developed by Pauli, and we now begin to explore it here through discussion of spin-1/2 systems. For such systems, we have $s = 1/2$, where the spin operators follow the commutation relations:
 \begin{equation}
     [S_i, S_j] = i\e_{ijk}S_k.
 \end{equation}
@@ -145,7 +145,7 @@ Consider the Hamiltonian:
 \begin{equation}
     \H = -\gv{\mu} \cdot \v{B}.
 \end{equation}
-Where $\gv{\mu} = \gamma \gv{s}$. This $\gamma$ coefficient cannot be estimated by classical physics; a full calculation requires considering the Dirac field in QFT. But we can also evaluate it via experiment.
+where $\gv{\mu} = \gamma \gv{s}$ is the magnetic moment; we have an interaction between an external magnetic field $\v{B}$ and the spin of a quantum particle. Note that the $\gamma$ coefficient in the magnetic moment cannot be estimated by classical physics; a full calculation requires considering the Dirac field in QFT. But it can also be measured via experiment.
 
-Next day, we will continue our discussion of this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
+Next time, we will continue our discussion of this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
 
