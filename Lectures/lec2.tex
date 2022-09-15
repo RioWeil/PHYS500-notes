@@ -1,0 +1,151 @@
+\section{Angular Momentum, Continued}
+\subsection{Review of Lecture 1}
+We start by reviewing the important points of last class. Using the commutation relations for $\v{L}^2, L_z, L_\pm$, we established that $L_\pm$ do not change the eigenvalue of $\v{L}^2$ when acting on an joint eigenstate of $\v{L}^2/L_z$, and we established the equations:
+\begin{equation}
+    \v{L}^2 = L_z^2 + L_{\pm}L_{\mp} \mp L_z.
+\end{equation}
+$\v{L}^2$ is the same for the highest and lowest states for $L_z$, and we established that $m_{max} = -m_{min}$. We found that the eigenvalues of $L_z$ jump in integer steps, and can take either integer or half-integer values. The main point is that we derived this purely algebraically (we did not solve Legendre polynomials). Note that 
+\begin{equation}
+    L_+\ket{l, m_{max}} = L_-\ket{l, m_{min}} = 0
+\end{equation}
+is equivalent to the boundary conditions when solving this problem in the differential equations approach. We found that:
+\begin{equation}
+    \bra{l, m}L_{\pm} \ket{l, m} = 0.
+\end{equation}
+by orthogonality, and using that $L_{x/y} = (L_+ \pm L_-)/2$ that:
+\begin{equation}
+    \bra{l, m}L_{x/y}\ket{l, m} = \bra{l, m}\frac{L_+ + L_-}{2}\ket{l, m} = 0.
+\end{equation}
+
+
+\subsection{Parity and Pseudovectors}
+It is clear that:
+\begin{equation}
+    \bra{l, m}L_z\ket{l, n} = m.
+\end{equation}
+We now ask, what is the value of $\bra{l, m}Z\ket{l, m}$ and $\bra{l, m}X\ket{l, m}$? We find that:
+\begin{equation}
+    \bra{l, m}Z\ket{l, m} = \bra{l, m}X\ket{l, m} = 0
+\end{equation}
+as when we specify the angular momentum, we know nothing of the position.
+
+How would we do this rigorously? We will come back to this when we do selection rules. For now, let us consider defining the parity operator $P$ that takes a vector $\v{v}$ and maps it to $-\v{v}$. So, each of the position operators get mapped to their negative (i.e. $P^\dagger XP= -X$). Using this in tandem with the fact that $\ket{l, m}$ are eigenvalues of parity (with eigenvalues $(-1)^l$, as we will discuss below), we could conclude that the above expectation values vanish, as:
+\begin{equation}
+    \bra{l, m} X \ket{l, m} = \bra{l, m}(-1)^l X (-1)^l \ket{l, m} = \bra{l, m}P^\dagger X P\ket{l, m} = \bra{l, m}(-X)\ket{l, m} = -\bra{l, m}X\ket{l, m}
+\end{equation}
+and comparing the first and last expressions we find that the expectation value is zero. However, we may then ask why does the expectation value of $L_z$ not vanish? This is because angular momentum (like torque and magnetic fields) are not vectors, but rather pseudovectors.
+
+\subsection{Parity Spherical harmonics}
+A last note about the eigenkets of angular momentum. In the position basis, we can write them as spherical harmonics:
+\begin{equation}
+    \ket{l, m} \cong Y_{l}^m(\theta, \phi).
+\end{equation}
+Consider a unit vector in 3d:
+\begin{equation}
+    \hat{n} = (n_x, n_y, n_z) = (\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta).
+\end{equation}
+How do the spherical harmonics behave under $Y_l^m(\hat{n}) \to Y_l^m(-\hat{n})$ (in terms of angles, $\theta \to \pi - \theta, \phi \to \phi + \pi$) They transform as:
+\begin{equation}
+    Y_l^m(-\hat{n}) = (-1)^lY_{l}^m(\hat{n}).
+\end{equation}
+Let us look at a couple examples. $Y_0^0 \sim \frac{1}{\sqrt{4\pi}}$ so is unchanged under the flip of the vector. $Y_1^0 \sim \cos\theta$ so this maps to $\cos(-\theta) \to -\cos\theta$ under a flip of the vector. $Y_1^1 \sim \sin\theta e^{i\phi}$, so the $\sin\theta$ stays the same under interchange but $e^{i\phi}$ flips sign so it maps to $-Y_1^1$. 
+
+Note this discussion is really trying to motivate the use of symmetry to skip doing computations; we don't have to compute integrals if we know the symmetry of the system.
+
+Another example (returning to the above discussion of expectation values of position). Hopefully by now we would be convinced that:
+\begin{equation}
+    \bra{l, m}\v{R}\ket{l, m}  = 0.
+\end{equation}
+by the above arguments showing that $\ket{l, m}$ are eigenvalues of parity with eigenvalue $(-1)^l$. Now what about $\bra{l+1, m}\v{R}\ket{l, m}$? In this case it is \emph{nonzero} as the negative signs cancel when we consider the parity properties.
+
+\subsection{Eigenvalues of Ladder Operators}
+We know that the ladder operators follow the relation:
+\begin{equation}
+    L_+\ket{l, m} = c_+\ket{l, m+1}
+\end{equation}
+but we have yet to calculate $c_+$. Let us do this now. We consider acting $L_-$ on the dual of $\ket{l, m}$:
+\begin{equation}
+    \bra{l, m}L_- = c_+^*\bra{l, m+1}
+\end{equation}
+So therefore:
+\begin{equation}
+    \bra{l, m}L_-L_+\ket{l, m} = \abs{c_+}^2\braket{l, m+1}{l, m+1}
+\end{equation}
+so:
+\begin{equation}
+    \abs{c_+}^2\bra{l, m}\v{L}^2 - L_z^2 - L_z\ket{l, m} = l(l+1) - m^2 - m
+\end{equation}
+so we conclude:
+\begin{equation}
+    c_+ = \sqrt{l(l+1) - m(m+1)}
+\end{equation}
+and an analogous computation can be done to find $c_-$.
+
+\subsection{Spin 1/2}
+Because of the degeneracy of angular momentum ($2l+1$) derived via the Schrodinger equation, people expected to always see an odd number of lines when doing energy line experiments. But this turned out not to be true in experimental results; we require a new approach to the theory, developed by Pauli. We now thus explore spin 1/2 systems. For such systems, we have $s = 1/2$, where the spin operators follow the commutation relations:
+\begin{equation}
+    [S_i, S_j] = i\e_{ijk}S_k.
+\end{equation}
+Since there are $(2s+1)$ states, we have only two spin eigenstates:
+\begin{equation}
+    \ket{s = \frac{1}{2}, s_z = +\frac{1}{2}}, \ket{s = \frac{1}{2}, s_z = -\frac{1}{2}}
+\end{equation}
+Which obey:
+\begin{equation}
+    S_+\ket{s = \frac{1}{2}, s_z = +\frac{1}{2}} = 0,  S_-\ket{s = \frac{1}{2}, s_z = -\frac{1}{2}} = 0
+\end{equation}
+Given this, a natural notation for these states is:
+\begin{equation}
+    \ket{\uparrow} \coloneqq \ket{s = \frac{1}{2}, s_z = +\frac{1}{2}}, \ket{\downarrow} \coloneqq \ket{s = \frac{1}{2}, s_z = -\frac{1}{2}}
+\end{equation}
+So the above relations become (e.g.) $S_+\ket{\uparrow} = 0$. The total spin operator is given by:
+\begin{equation}
+    \v{S} \cong \frac{1}{2}\gv{\sigma}
+\end{equation}
+where $\gv{\sigma} = (\sigma_x, \sigma_y, \sigma_z)^T$, with the Pauli matrices given by:
+\begin{equation}
+    \sigma_x = \paulix, \sigma_y = \pauliy, \sigma_z = \pauliz.
+\end{equation}
+Note that there is no reference to coordinates whatsoever here; everything is purely algebraic. Now, what is the value of $\v{S}^2\ket{\uparrow}$? From the theory of angular momentum, we know that:
+\begin{equation}
+    \v{S}^2\ket{\uparrow} = s(s+1)\ket{\uparrow} = \frac{3}{4}\ket{\uparrow}.
+\end{equation}
+But let us derive this result using the matrix form of $\v{S}^2$. We can explicitly calculate to find that:
+\begin{equation}
+    \sigma_i^2 = \imatrix
+\end{equation}
+for each of the pauli matrices, so:
+\begin{equation}
+    \v{S}^2 \cong \frac{1}{4}(\sigma_x^2 + \sigma_y^2 + \sigma_z^2) = \frac{3}{4}\imatrix.
+\end{equation}
+So with the choice of representation that $\ket{\uparrow} \cong \m{1//0}$ and $\ket{\downarrow} \cong \m{0//1}$, we find:
+\begin{equation}
+    \v{S}^2\ket{\uparrow} = \frac{3}{4}\ket{\uparrow},
+\end{equation}
+along with:
+\begin{equation}
+    S_z\ket{\uparrow} = \ket{\uparrow}.
+\end{equation}
+by looking at these matrix expressions. From now on, we will focus on spin-1/2 (though we will explore spin-1 in the homework). We will discuss the most general spin 1/2 state. It is given by:
+\begin{equation}
+    \ket{\chi} = c_+\ket{\uparrow} + c_-\ket{\downarrow}.
+\end{equation}
+In the spinor representation, it is given by:
+\begin{equation}
+    \chi = \m{c_+ \\ c_-}.
+\end{equation}
+How many real parameters are needed to specify the quantum state? Naively, we would say 4 (2 complex numbers). One is reduced by the normalization condition:
+\begin{equation}
+    \abs{c_+}^2 + \abs{c_-}^2 = 1.
+\end{equation}
+We also have a reduction of one from the fact that the state is physically unchanged when multiplied by a global phase $\ket{\chi} \sim e^{i\phi}\ket{\chi}$. An important note: \emph{relative} phases are observable (e.g. in neutron inferometry experiments), but global ones are not. So in the case of a single qubit/spin 1/2 particle, we can neglect the phase, but when we have multiple particles we cannot neglect relative phases.
+
+\subsection{Magnetic Hamiltonians}
+Consider the Hamiltonian:
+\begin{equation}
+    \H = -\gv{\mu} \cdot \v{B}.
+\end{equation}
+Where $\gv{\mu} = \gamma \gv{s}$. This $\gamma$ coefficient cannot be estimated by classical physics; a full calculation requires considering the Dirac field in QFT. But we can also evaluate it via experiment.
+
+Next day, we will continue our discussion fo this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
+

@@ -1,0 +1,151 @@
+\section{Angular Momentum}
+
+\subsection{Units}
+We set $\hbar = 1$ for this course (natural units), unless we are doing a numerical estimate of some quantity.
+
+\subsection{Angular Momentum - Definitions}
+Angular momentum operators obey the commutation relations:
+\begin{equation}
+    [L_i, L_j] = i\e_{ijk}L_k.
+\end{equation}
+Where $\e_{ijk}$ is the Levi-Cicata symbol, defined as:
+\begin{equation}
+    \e_{ijk} = \begin{cases}
+        +1 & ijk \text{ is an even permutation of 123}
+        \\ -1 & ijk \text{ is an odd permutation of 123}
+        \\ 0 & \text{otherwise}
+    \end{cases}
+\end{equation}
+We also follow the Einstein summation convention, where repeated indices are implicitly summed over. We also define the raising/lowering operators:
+\begin{equation}
+    L_{\pm} = L_x \pm iL_y
+\end{equation}
+and the total angular momentum:
+\begin{equation}\label{eq-Lsquared}
+    \v{L}^2 = L_x^2 + L_y^2 + L_z^2.
+\end{equation}
+It can be easily verified that:
+\begin{equation}
+    [\v{L}^2, L_i] = 0
+\end{equation}
+and that:
+\begin{equation}
+    [L_z, L_+] = [L_z, L_x + iL_y] = +L_+
+\end{equation}
+\begin{equation}
+    [L_z, L_-] = -L_-
+\end{equation}
+\begin{equation}
+    [\v{L}^2, L_\pm] = 0
+\end{equation}
+Note that while $L_i$ are Hermitian operators (they are observables), the $L_\pm$ are not (this can be verified by the definition of the Hermitian conjugate). However this does not mean that it is not useful. Now, we ask, what is the physical meaning of:
+\begin{equation}
+    [\v{L}^2, L_z] = 0
+\end{equation}
+The answer is that we can know/measure $\v{L}^2$ and $L_z$ simultaneously. Next, what is the meaning of:
+\begin{equation}
+    [\v{L}^2, L_\pm] = 0
+\end{equation}
+This means that if we apply $L_{\pm}$ to an eigenstate of $\v{L}^2$, we do not change the eigenstate. Now, what is the physical meaning of:
+\begin{equation}
+    [L_z, L_+] = L_+?
+\end{equation} 
+It tells us that $L_+$ is a raising operator for $L_z$; it increments the eigenvalue of $L_z$. 
+
+\subsection{Angular Momentum - Eigenvalues}
+Let us now proceed with our construction. Consider the simultaneous eigenbasis of $\v{L}^2$ and $L_z$. Let us call the kets of this eigenbasis as $\ket{l, m}$. We want to solve the eigenvalue problem:
+\begin{equation}
+    \begin{split}
+        \v{L}^2\ket{l, m} &= \lambda\ket{l, m}.
+        \\ L_z\ket{l, m} &= m\ket{l, m}
+    \end{split}  
+\end{equation}
+Let us back up for a moment; why can we define a simultaneous eigenbasis? Of course this follows from the fact that $\v{L}^2$ and $L_z$ commute:
+\begin{equation}
+    [\v{L}^2, L_z] = 0 \implies [\v{L}^2, L_z]\ket{l, m} = 0.
+\end{equation}
+Let us also check our physical interpretation of $L_+$. We know that $L_+\ket{l, m}$ should give us another eigenstate of $\v{L}^2$ and $L_z$ (which we can call $\ket{x}$), but to this end we calculate:
+\begin{equation}
+    [\v{L}^2, L_\pm] = 0 \implies [\v{L}^2, L_\pm]\ket{l, m} = 0.
+\end{equation}
+so we know that:
+\begin{equation}
+    \v{L}^2\ket{x} - \lambda\ket{x} = 0.
+\end{equation}
+Now, we know that $[L_z, L_+] = L_+$, so:
+\begin{equation}
+    [L_z, L_+]\ket{l, m} = L_+\ket{l, m}.
+\end{equation}
+Expanding the above, we have:
+\begin{equation}
+    L_z\ket{x} - m\ket{x} = \ket{x}.
+\end{equation}
+So rearranging we have:
+\begin{equation}
+    L_z\ket{x} = (m+1)\ket{x}
+\end{equation}
+And we can find an analogous result for $L_-$. We don't yet know how to normalize these states (we will do so later). But the above result is purely algebraic; no differential equations or spherical harmonics to be found. Let us continue and find the eigenvalues in an algebraic manner. If we recall the definition of $\v{L}^2$ in Eq. \eqref{eq-Lsquared}, we have:
+\begin{equation}
+    \v{L}^2 = L_z^2 + L_y^2 + L_x^2 = L_z^2 + (L_x + iL_y)(L_x - iL_y) + i(L_xL_y - L_yL_x). 
+\end{equation}
+Now using what we know of the angular momentum commutation relations and the raising/lowering operators:
+\begin{equation}
+    \v{L}^2 = L_z^2 + L_+L_- - L_z = L_z^2 + L_-L_+ + L_z
+\end{equation}
+Now, we consider applying the lowering operator $L_-$ many many times. We then get to a state with the lowest projection $m_{min}$. We then have that:
+\begin{equation}
+    L_-\ket{l, m_{min}} = 0.
+\end{equation}
+This arises from the fact that we cannot decrease $m$ further than the total angular momentum value (much in the same way that we cannot go below the ground state of the quantum harmonic oscillator). Analogously, we have:
+\begin{equation}
+    L_+\ket{l, m_{max}} = 0.
+\end{equation}
+Now, we apply $\v{L}^2$ to the minimum projection eigenstate. Then using the form of $\v{L}^2$ derived above, we have:
+\begin{equation}
+    \v{L}^2\ket{l, m_{min}} = (L_z^2 + L_+L_- - L_z)\ket{l, m_{min}}  = (L_z^2 - L_z)\ket{l, m_{min}} = (m^2_{min} - m_{min})\ket{l, m_{min}}
+\end{equation}
+and analogously:
+\begin{equation}
+    \v{L}^2\ket{l, m_{max}} = (L_z^2 + L_-L_+ + L_z)\ket{l, m_{max}}  = (L_z^2 + L_z)\ket{l, m_{max}} = (m^2_{max} + m_{max})\ket{l, m_{max}}.
+\end{equation}
+From this we obtain that:
+\begin{equation}
+    (m^2_{min} - m_{min}) = (m^2_{max} + m_{max})
+\end{equation}
+as the magnitude/eigenvalue of $\v{L}^2$ on the min/max projections should be the same. The above equation only has one nontrivial solution:
+\begin{equation}
+    m_{max} = -m_{min}.
+\end{equation}
+Now, we observe that we have an integer number of steps (as $L_+/L_-$ raise/lower by integers), so:
+\begin{equation}
+    m_{max} - m_{min} = N \in \NN
+\end{equation}
+And therefore:
+\begin{equation}
+    2m_{max} = N \implies m_{max} = \frac{N}{2}.
+\end{equation}
+That is to say that the eigenvalues of angular momentum can be integers or half-integers. We can conclude the eigenvalue relations:
+\begin{equation}
+    \v{L}^2\ket{l, m} = l(l+1)\ket{l, m}
+\end{equation}
+\begin{equation}
+    L_z\ket{l, m} = m\ket{l, m}
+\end{equation}
+where $l$ or $m$ are either integers or half integers.
+
+Now, we move onto the question of degeneracy. We have a $2l + 1$ degeneracy, where we count:
+\begin{equation}
+    m = -l, -l + 1, \ldots, 0, \ldots, l - 1, l.
+\end{equation}
+Now, we suppose we want to compute $\bra{l, m}L_x\ket{l, m}$. It turns out to be zero, but how do we show this? Physically, we can say that $L_x$ is completely uncorrelated with $L_z$ and so we should get zero. Mathematically we can use ladder operators:
+\begin{equation}
+    \bra{l, m}L_x\ket{l, m} = \bra{l, m}L_+ + L_-\ket{l, m} = \bra{l, m}\left(\ket{l, m+1} + \ket{l, m-1}\right) 0
+\end{equation} 
+where in the last relation we use that the $\ket{l, m}$ are orthogonal. Now we ask what about $\bra{l, m}L_x^2\ket{l, m}$? It is nonzero. We can calculate this by:
+\begin{equation}
+    \bra{l, m}L_x^2\ket{l, m} = \bra{l, m}\v{L}^2 - L_z^2 - L_y^2\ket{l, m}
+\end{equation}
+by symmetry we can conclude that $\bra{l, m}L_x^2\ket{l, m} =\bra{l, m}L_y^2\ket{l, m}$, and so:
+\begin{equation}
+    \bra{l, m}L_x^2\ket{l, m} = \frac{1}{2}\bra{l, m}(\v{L}^2 - L_z^2)\ket{l, m} = \frac{1}{2}\left[l(l+1) - m^2\right].
+\end{equation}
