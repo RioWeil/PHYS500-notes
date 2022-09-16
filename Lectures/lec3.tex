@@ -72,12 +72,13 @@ and now everything is solved! We know the eigenvalues and eigenstates, so we hav
     \chi(t) = \frac{c_+e^{-i\frac{E_+t}{\hbar}}}{\sqrt{\abs{c_+}^2 + \abs{c_-}^2}}\m{1\\0} + \frac{c_-e^{-i\frac{E_-t}{\hbar}}}{\sqrt{\abs{c_+}^2 + \abs{c_-}^2}}\m{0\\1}
 \end{equation}
 
+\subsection{Time-dependence of Observables}
 For a most general spin-1/2 state, if we enforce the normalization condition of $\abs{c_+}^2 + \abs{c_-}^2 = 1$, then we can parameterize with just three parameters:
-\begin{equation}
+\begin{equation}\label{eq-chigeneral}
     \chi = e^{i\alpha}\m{\cos\frac{\theta}{2} \\ \sin\frac{\theta}{2}e^{-i\phi}}
 \end{equation}
 For now, let us discard the phases ($\alpha = \phi = 0$) and suppose that at $t = 0$ we have:
-\begin{equation}
+\begin{equation}\label{eq-chithetat0}
     \chi(t = 0) = \m{\cos\frac{\theta}{2} \\ \sin\frac{\theta}{2}}.
 \end{equation}
 
@@ -91,19 +92,27 @@ This turns out to be independent of time; let us see this in two ways. First, we
 \end{equation}
 Where $\omega$ is defined as the difference between the two frequencies. When we do the explicit computation, we find:
 \begin{equation}
-    \avg{S_z}(t) = \bra{\chi(t)}S_z\ket{\chi(t)} = \m{\cos\frac{\theta}{2} e^{-i\omega t/2}& \sin\frac{\theta}{2} e^{i\omega t/2}}\pauliz \m{\cos\frac{\theta}{2} e^{i\omega t/2} \\ \sin\frac{\theta}{2} e^{-i\omega t/2}} =  \frac{1}{2}\left(\cos^2\frac{\theta}{2} - \sin^2\frac{\theta}{2}\right) = \frac{1}{2}\cos\theta.
+    \bra{\chi(t)}S_z\ket{\chi(t)} = \m{\cos\frac{\theta}{2} e^{-i\omega t/2}& \sin\frac{\theta}{2} e^{i\omega t/2}}\pauliz \m{\cos\frac{\theta}{2} e^{i\omega t/2} \\ \sin\frac{\theta}{2} e^{-i\omega t/2}} =  \frac{1}{2}\left(\cos^2\frac{\theta}{2} - \sin^2\frac{\theta}{2}\right) = \frac{1}{2}\cos\theta.
 \end{equation}
-If we do the same comnputation for $\avg{S_z}(t)$, we find that the time-dependence does not cancel out:
+If we do the same comnputation for $\avg{S_x}(t)$, we find that the time-dependence does not cancel out:
 \begin{equation}
-    \avg{S_x}(t) = \bra{\chi(t)}S_x\ket{\chi(t)} = \m{\cos\frac{\theta}{2} e^{-i\omega t/2}& \sin\frac{\theta}{2} e^{i\omega t/2}}\paulix \m{\cos\frac{\theta}{2} e^{i\omega t/2} \\ \sin\frac{\theta}{2} e^{-i\omega t/2}} =  \frac{1}{2}\sin\frac{\theta}{2}\cos\frac{\theta}{2}\left(e^{i\omega t} + e^{-i\omega t}\right) = \frac{1}{2}\sin\theta\cos(\omega t).
+    \bra{\chi(t)}S_x\ket{\chi(t)} = \m{\cos\frac{\theta}{2} e^{-i\omega t/2}& \sin\frac{\theta}{2} e^{i\omega t/2}}\paulix \m{\cos\frac{\theta}{2} e^{i\omega t/2} \\ \sin\frac{\theta}{2} e^{-i\omega t/2}} =  \frac{1}{2}\sin\frac{\theta}{2}\cos\frac{\theta}{2}\left(e^{i\omega t} + e^{-i\omega t}\right) = \frac{1}{2}\sin\theta\cos(\omega t).
 \end{equation}
 We can picture this as the spin precessing at a fixed angle $\theta$ (fixed $z$-position).
 
 \begin{figure}[htbp]
     \centering
-    \textcolor{blue}{TODO: Spin precession here}
-    \caption{<caption>}
-    \label{<label>}
+    \begin{tikzpicture}
+        \draw [rotate around={0.:(0.,0.)},dash pattern=on 2pt off 2pt, blue] (0,0) ellipse (2cm and 0.5cm);
+        \draw [lightgray, fill, fill opacity=0.1] (0, -1.6) -- (0, -1) arc [start angle=90, end angle=30, radius=0.5cm] -- cycle;
+        \draw[->, blue, thick] (-0.01, -0.5) -- (0.01, -0.5);
+        \draw[->, blue, thick] (0.01, 0.5) -- (-0.01, 0.5);
+        \draw[] (0, -2) -- (0, 1);
+        \draw[-latex, blue, thick] (-0.5, -2) -- (2, 0);
+        \node[] at (0.3, -0.85) {$\theta$};
+    \end{tikzpicture}
+    \caption{When the initial spinor state $\chi(t = 0)$ is given by Eq. \eqref{eq-chithetat0} and evolves under a $z$-oriented magnetic field, the spin state can be visualized as precessing at fixed $\theta$ (the same $\theta$ as in the initial state). More technically, we could say that the spin state precesses at a fixed polar angle on the Bloch sphere; Note that the general spin state given in Eq. \eqref{eq-chigeneral} invites the visualization of a single spin-1/2 particle as a point on the unit sphere with polar coordinates $(\theta, \phi)$ (of course the global phase $\alpha$ is physically irrelevant).}
+    \label{fig-spinprecess}
 \end{figure}
 
 However, there is a \emph{much} easier way to see why there is no time-dependence in the $S_z$ case, while there is a time-dependence in the $S_x$ case. The way to see this is that $[S_z, H] = 0$ ($S_z$ commutes with the Hamiltonian) so there is no time-dependence. Conversely, $S_x$ does not commute with the Hamiltonian, so we know that there is time dependence.
