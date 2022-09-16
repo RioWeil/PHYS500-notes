@@ -1,5 +1,5 @@
 \section{Angular Momentum, Continued}
-\subsection{Review of Lecture 1}
+\subsection{Review of Angular Momentum Operators}
 We start by reviewing the important points of last class. Using the commutation relations for $\v{L}^2, L_z, L_\pm$, we established that $L_\pm$ do not change the eigenvalue of $\v{L}^2$ when acting on an joint eigenstate of $\v{L}^2/L_z$, and we established the equations:
 \begin{equation}
     \v{L}^2 = L_z^2 + L_{\pm}L_{\mp} \mp L_z.
@@ -18,7 +18,7 @@ by orthogonality, and using that $L_{x/y} = (L_+ \pm L_-)/2$ that:
 \end{equation}
 
 
-\subsection{Parity and Pseudovectors}
+\subsection{Parity and Eigenkets of Angular Momentum}
 It is clear that:
 \begin{equation}
     \bra{l, m}L_z\ket{l, m} = m.
@@ -35,7 +35,6 @@ How would we do this rigorously? We will come back to this when we do selection 
 \end{equation}
 and comparing the first and last expressions we find that the expectation value is zero. However, we may then ask why does the expectation value of $L_z$ not vanish? This is because angular momentum (like torque and magnetic fields) are not vectors, but rather pseudovectors.
 
-\subsection{Parity Spherical harmonics}
 Let us take a closer look at how parity is related to eigenkets of angular momentum. In the position basis, we can write them as spherical harmonics:
 \begin{equation}
     \ket{l, m} \cong Y_{l}^m(\theta, \phi).
@@ -140,7 +139,7 @@ How many real parameters are needed to specify the quantum state? Naively, we wo
 \end{equation}
 We also have a reduction of one from the fact that the state is physically unchanged when multiplied by a global phase $\ket{\chi} \sim e^{i\phi}\ket{\chi}$; this comes from the fact that we can only measure probabilities in QM, and when we calculate these (using the Born rule, $p(i) = \bra{\psi}\Pi_i\ket{\psi}$ the global phase cancells out). An important distinction: \emph{relative} phases are observable (e.g. in neutron inferometry experiments), while global ones are not. So in the case of a single spin-1/2 particle, we can neglect the phase, but when we have multiple particles we cannot neglect relative phases.
 
-\subsection{Magnetic Hamiltonians}
+\subsection{Spin in Magnetic Field}
 Consider the Hamiltonian:
 \begin{equation}
     \H = -\gv{\mu} \cdot \v{B}.
