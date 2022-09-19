@@ -1,4 +1,4 @@
-\section{Angular Momentum, Continued}
+\section{Angular Momentum and Spin}
 \subsection{Review of Angular Momentum Operators}
 We start by reviewing the important points of last class. Using the commutation relations for $\v{L}^2, L_z, L_\pm$, we established that $L_\pm$ do not change the eigenvalue of $\v{L}^2$ when acting on an joint eigenstate of $\v{L}^2/L_z$, and we established the equations:
 \begin{equation}
@@ -57,7 +57,7 @@ Another example (returning to the above discussion of expectation values of posi
 \end{equation}
 by the above arguments showing that $\ket{l, m}$ are eigenvalues of parity with eigenvalue $(-1)^l$. Now what about $\bra{l+1, m}\v{R}\ket{l, m}$? In this case it is \emph{nonzero} as the negative signs cancel when we consider the parity properties.
 
-\subsection{Eigenvalues of Ladder Operators}
+\subsection{Coefficients of Ladder Operators}
 We know that the ladder operators follow the relation:
 \begin{equation}
     L_+\ket{l, m} = c_+\ket{l, m+1}
@@ -141,13 +141,3 @@ How many real parameters are needed to specify the quantum state? Naively, we wo
     \abs{c_+}^2 + \abs{c_-}^2 = 1.
 \end{equation}
 We also have a reduction of one from the fact that the state is physically unchanged when multiplied by a global phase $\ket{\chi} \sim e^{i\phi}\ket{\chi}$; this comes from the fact that we can only measure probabilities in QM, and when we calculate these (using the Born rule, $p(i) = \bra{\psi}\Pi_i\ket{\psi}$ the global phase cancells out). An important distinction: \emph{relative} phases are observable (e.g. in neutron inferometry experiments), while global ones are not. So in the case of a single spin-1/2 particle, we can neglect the phase, but when we have multiple particles we cannot neglect relative phases.
-
-\subsection{Spin in Magnetic Field}
-Consider the Hamiltonian:
-\begin{equation}
-    \H = -\gv{\mu} \cdot \v{B}.
-\end{equation}
-where $\gv{\mu} = \gamma \gv{s}$ is the magnetic moment; we have an interaction between an external magnetic field $\v{B}$ and the spin of a quantum particle. Note that the $\gamma$ coefficient in the magnetic moment cannot be estimated by classical physics; a full calculation requires considering the Dirac field in QFT. But it can also be measured via experiment.
-
-Next time, we will continue our discussion of this Hamiltonian and the evolution of spin states under it. We will also discuss Gauge invariance in the context of quantum mechanics.
-
