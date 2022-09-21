@@ -1,0 +1,135 @@
+\section{Electromagnetic Fields}
+\subsection{The Hamiltonian and Gaussian units}
+We consider the Hamiltonian:
+\begin{equation}\label{eq-Hem}
+    H = \frac{1}{2m}\left(\v{p} - \frac{q}{c}\v{A}\right)^2 + qV
+\end{equation}
+We use Gaussian units, where $\frac{e^2}{4\pi \e_0} \to e^2$. The potential will (for the Coulomb interaction) will later be $qV = -\frac{Ze^2}{r}$ (the sign will be relevant later, to distinguish attractive (negative sign) and repulsive). For now take $q = -e$. Note for the magnetic moment we take:
+\begin{equation}
+    \mu = \frac{\abs{e}\hbar}{2mc}
+\end{equation}
+why Gaussian units? Because in SI units, the electric and magnetic fields have different units, but in Gaussian, they have the same units. Things will become unbelievably tedious to keep track of if we keep the $4\pi\e_0$s in. The Hydrogen atom Hamiltonian takes the form:
+\begin{equation}
+    H = \frac{1}{2m}\v{p}^2 - \frac{Ze^2}{r}.
+\end{equation}
+And to solve this problem, we take $\v{p} \to -i\hbar \nabla$ and use the standard techniques (covered in undergrad QM).
+
+\subsection{Potentials and Gauge Invariance}
+Let us make some comments about the Hamilonian in Eq. \eqref{eq-Hem}. We may be familiar with the Lorentz force law in classical E\&M:
+\begin{equation}
+    m\ddot{\v{r}} = \v{F} = q(\v{E} + \v{v} \times \v{B})
+\end{equation}
+where the dynamics are completely governed by the fields $\v{E}, \v{B}$. We can specify the fields by the scalar/vector potentials $V/\v{A}$:
+\begin{equation}
+    \v{B} = \nabla \times \v{A}, \quad \v{E} = -\nabla V - \frac{1}{c}\dpd{\v{A}}{t}.
+\end{equation}
+$V, \v{A}$ have features known as \emph{Gauge invariance}; a fundamental principle of nature. Consider the gauge transformation:
+\begin{equation}
+    V' = V - \frac{1}{c}\dpd{f(\v{r}, t)}{t}, \quad \v{A}' = \v{A} + \nabla f(\v{r}, t).
+\end{equation}
+When we do computations for electric and magnetic fields, we find that $V'/\v{A}'$ specify the same physical fields:
+\begin{equation}
+    \v{E}' = -\nabla V' - \frac{1}{c}\dpd{\v{A}'}{t} = \v{E} + \left(\dpd{}{t}\nabla  - \nabla \dpd{}{t}\right)f(\v{r}, t) = \v{E}
+\end{equation}
+and analogously:
+\begin{equation}
+    \v{B}' = \v{B}.
+\end{equation}
+In classical physics, this is a triviality; a gauge transformation does nothing to the physics. What about quantum mechanics? In quantum mechanics we solve the SE:
+\begin{equation}
+    H\psi = E\psi
+\end{equation} 
+with the Hamiltonian Eq. \eqref{eq-Hem}. Now it begins to seem like we have a different equation; is this indeed the case? 
+
+In classical physics, we tend to fix gauges based on convenience. When we study electrostatics, we choose the Coloumb gauge:
+\begin{equation}
+    \nabla \cdot \v{A} = 0
+\end{equation}
+When we study radiation, we choose the Lorentz gauge (convenient as it is Lorentz covariant):
+\begin{equation}
+    \nabla \cdot \v{A} + \frac{1}{c}\dpd{V}{t} = 0.
+\end{equation} 
+We mention this as we want a quantum-classical correspondence; we want to be able to compare the quantum and classical calculation at the end.
+
+\subsection{QM Resolution of the Problem}
+Let us precisely study what happens when we change the Gauge.
+\begin{equation}
+    \left(\v{p}' - \frac{q}{c}\v{A}'\right)\psi'
+\end{equation}
+where:
+\begin{equation}
+    \psi' = e^{i\frac{q}{\hbar c}f}\psi
+\end{equation}
+If there is no degeneracy, we have no problem as changing the Gauge only introduces a physically meaningless phase; however the problem appears when we have degeneracy (e.g. in the Landau levels HW problem; we have an infinite degeneracy). Let us study this further:
+\begin{equation}
+    -i\hbar \nabla \psi' - \frac{q}{c}A'\psi' = -i\hbar \nabla\psi e^{i\frac{q}{\hbar c}t} + \frac{q}{c}(\nabla f)e^{i\frac{q}{\hbar c}f}\psi - \frac{q}{c}\v{A}\psi e^{i\frac{q}{\hbar c}f} - \frac{q}{c}(\nabla f)e^{i \frac{q}{\hbar c}f}\psi
+\end{equation}
+The second and fourth terms cancel, so we have:
+\begin{equation}
+    \left(\v{p}' - \frac{q}{c}\v{A}'\right)\psi' = \left[\left(\v{p} - \frac{q}{c}\v{A}\right)\psi\right]e^{i\frac{q}{\hbar c}f}
+\end{equation}
+We therefore obtain the following: when we do the SE, the phase appears on the LHS and RHS, and cancels. So though the Hamiltonian may be different, the eigenfunctions are the same. So we say that the covariant derivative $\left(\v{p} - \frac{q}{c}\v{A}\right)$ is gauge invariant. If we break gauge invariance, then we break fundamental principles.
+
+\subsection{}
+We work with the Hamiltonian:
+\begin{equation}
+    H = \frac{1}{2m}\left(\v{p} - \frac{q}{c}\v{A}\right)^2
+\end{equation}
+where we have neglected the trivial $V$ term (if we have a time-independent gauge transformation, the $V$ remains unchanged). Let us write this in tensorial notation:
+\begin{equation}
+    H = \frac{1}{2m}\left(\v{p}_i - \frac{q}{c}\v{A}_i\right)\left(\v{p}_i - \frac{q}{c}\v{A}_i\right)
+\end{equation}
+We can represent this as follows:
+\begin{equation}
+    H = \frac{1}{2m}\left(\v{p}^2 + \left(\frac{q}{c}\v{A}\right)^2 - \frac{q}{c}\left(\v{A} \cdot \v{p} + \v{p}\cdot\v{A}\right)\right)
+\end{equation}
+Now we want to calculate $[p_i, A_j]$. Let us build up to this. We know already that:
+\begin{equation}
+    [p_x, x] = -i\hbar
+\end{equation}
+We can derive:
+\begin{equation}
+    [p_i, f(\v{r})] = -i\hbar \nabla_i f(\v{r})
+\end{equation}
+where the RHS is determined by explicitly writing out the commutator and acting it on a test function (alternatively: taylor expand the $f$ and use induction). Directly applying this we have:
+\begin{equation}
+    [p_i, A_j(\v{r})] = -i\hbar \nabla_i A_j(\v{r}).
+\end{equation}
+
+Now, pay attention to how we fix the Gauge:
+\begin{equation}
+    \delta_{ij}[p_i, A_j(\v{r})] = -i\hbar \nabla_i A_j(\v{r})\delta_{ij}
+\end{equation}
+so then:
+\begin{equation}
+    [p_i, A_j] = -i\hbar \nabla \cdot \v{A} = 0.
+\end{equation}
+so we work in the Coloumb gauge, where $p_i, A_j$ commute (note this is NOT true in any other gauge). So our Hamiltonian in this gauge becomes:
+\begin{equation}
+    H =  H = \frac{1}{2m}\left(\v{p}^2 + \left(\frac{q}{c}\v{A}\right)^2 - \frac{2q}{c}\v{A} \cdot \v{p}\right).
+\end{equation}
+We have the vector potential:
+\begin{equation}
+    \v{A} = -\frac{1}{2}\v{r} \times \v{B}
+\end{equation}
+and we work in a cylindrical system, with $A_z = 0, A_r = 0, A_\phi = \frac{1}{2}rB_z$. The magnetic field is calculated to be:
+\begin{equation}
+    \v{B} = \nabla \times \v{A} = \frac{1}{r}\left[\dpd{}{r}(rA_\phi) - \dpd{}{\phi}A_r\right]\zhat = \frac{1}{r}\dpd{r^2B_z/2}{r} = B_z
+\end{equation}
+(it can be checked that the radial/angular parts of the magnetic field are zero). We compute the $\v{A} \cdot \v{p}$ term:
+\begin{equation}
+    \v{A} \cdot \v{p} = -\frac{1}{2}\left(\v{r} \times \v{B}\right) \cdot \v{p} = \frac{1}{2}\v{B} \cdot (\v{r} \times \v{p}) = \frac{1}{2}\v{B} \cdot \v{L}.
+\end{equation}
+So the term in the Hamiltonian is:
+\begin{equation}
+    -\frac{2q}{2mc}\v{A} \cdot \v{p} = -\frac{q}{mc}\frac{1}{2}\v{B} \cdot \v{L} = -\gv{\mu} \cdot \v{B}
+\end{equation}
+where we have taken:
+\begin{equation}
+    \gv{\mu} = \mu \v{L} = \frac{q}{2mc}\v{L}
+\end{equation}
+So we find the gyromagnetic ratio:
+\begin{equation}
+    \mu = \frac{q\hbar}{2mc}.
+\end{equation}
+where we take $\hbar$ to be included in the $\mu$ so we can work with angular momentum dimensionlessly.
