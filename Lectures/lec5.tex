@@ -1,0 +1,144 @@
+\section{Gauge Invariance Part II, Angular Momentum Addition}
+\subsection{Gauge Invariance, Symmetry, Conservation Laws}
+In addition to the gauge invariance we are familiar from classical electromagnetism, in QM we get an extra phase factor:
+\begin{equation}
+    \psi' = e^{i\frac{q}{\hbar c}f}\psi.
+\end{equation}
+If the wavefunction describes a single state (no degeneracy), then we can ignore this global phase. But normally we do have degeneracy (and often infinite degeneracy), and here this phase factor will be significant. See HW1Q9 for a concrete example of this.
+
+Why do we go on about gauge invariance? Because gauge invariance is connected to some symmetry (which leads to a conserved quantity via Noether's theorem). In this case, the conserved quantity is charge. We are familiar with the examples of momentum being conserved due to translation invariance, angular momentum being conserved due to rotational invariance, and energy being conserved due to time invariance. 
+
+\subsection{Analyzing the Coulomb Hamiltonian}
+We recall the Hamiltonian, with the choice of Coulomb gauge $\nabla \cdot \v{A} = 0$.
+\begin{equation}
+    H = \left(\v{p} - \frac{q}{c}\v{A}\right)^2\frac{1}{2m} = \frac{1}{2m}\left(\v{p}^2 + \frac{q^2}{c^2}\v{A}^2 - \frac{2q}{c}\v{A}\cdot \v{p}\right)
+\end{equation}
+If we have $\v{A} = \frac{1}{2}\v{r} \times \v{B}$, $\v{A}$ gives us the correct magnetic field. We recall that the $\v{A} \cdot \v{p}$ term precisely describes the interaction of the magnetic moment with the magnetic field:
+\begin{equation}
+- \frac{2q}{c}\v{A}\cdot \v{p} \to \frac{q}{2mc} B_zL_z.
+\end{equation}
+We have not introduced spin here, as this would be more complicated (we would be working with the Dirac equation, and work with an extra $+2S_z$ piece). If we represent $\v{A}^2$ in terms of what we did last class, we can write the entire Hamiltonian as:
+\begin{equation}
+    H = \frac{p_z^2}{2m} + \left(\frac{p_x^2 + p_y^2}{2m} + \frac{q^2B^2}{8mc^2}\left(x^2 + y^2\right)\right) - \frac{q}{2mc}B_zL_z
+\end{equation}
+we note the structure of the above expression; we have three terms:
+\begin{equation}
+    H_z = \frac{p_z^2}{2m}, \quad H_\perp = \left(\frac{p_x^2 + p_y^2}{2m} + \frac{q^2B^2}{8mc^2}\left(x^2 + y^2\right)\right), \quad H_{\parallel} =  - \frac{q}{2mc}B_zL_z
+\end{equation}
+We don't have to solve the Hamiltonian, which is very complicated. We instead sit down and look at it. In particular, we want to know what operators commute with the Hamiltonian. First, we see:
+\begin{equation}
+    [H, p_z] = 0
+\end{equation}
+as there are no terms with $z$ in the Hamiltonian. So, the $z$-momentum is a conserved quantity, and the eigenstates in $z$ are plane waves. Next, we have that:
+\begin{equation}
+    [H, L_z] = 0.
+\end{equation}
+How do we see this? The Hamiltonian is \emph{radially symmetric}, i.e. although $L_z$ has a nontrivial commutator with $x, y$, it commutes with $x^2 + y^2 = r^2$. Next, we ask whether we can measure $p_z$ and $L_z$ simultaneously; of course we can:
+\begin{equation}
+    [p_z, L_z] = 0.
+\end{equation}
+The next question we ask; we have $H_\perp$ which is the Hamiltonian in the plane. We already have argued that:
+\begin{equation}
+    [L_z, H_\perp] = 0.
+\end{equation}
+We now have an equation that we can immediately solve. Our state is classified by three different numbers; first:
+\begin{equation}
+    p_z\psi_k = \hbar k \psi_k.
+\end{equation}
+where:
+\begin{equation}
+    \psi_k =  e^{i\frac{p_z z}{\hbar}} = e^{i\frac{\hbar k z}{\hbar}}.
+\end{equation}
+We also have:
+\begin{equation}
+    L_z\ket{l} = \hbar l \ket{l}
+\end{equation}
+(and we already know what the eigenstates look like). We also have the third term:
+\begin{equation}
+    H_\perp \psi_n = E_n \psi_n
+\end{equation}
+but we can see by inspection that $H_\perp$ is nothing but a two-dimensional quantum harmonic oscillator, so:
+\begin{equation}
+    E_n = \hbar \omega (n + 1), \quad n = (n_x + \frac{1}{2}) + (n_y + \frac{1}{2}).
+\end{equation}
+where $\omega$ is as usual defined as:
+\begin{equation}
+    \omega^2 = \frac{q^2B^2}{4mc^2}\frac{1}{m} = \left(\frac{qB}{2mc}\right)^2.
+\end{equation}
+$\omega$ is nothing more than the Larmour frequency which we know from classical electromagnetism. What is important is to look at the expression for $H_\parallel$; it is precisely the Larmour frequency which appears. So, writing down the final expression for the energy, we have:
+\begin{equation}
+    E_{klm} = \hbar \omega(n + l + 1) + \frac{\hbar^2 k^2}{2m}
+\end{equation}
+Where the $n + 1$ comes from the $H_\perp$ term, the $l$ comes from the $H_\parallel$ term, and the $k$ comes from the $H_z$ term. Once we look at this expression (taking $k = 0$ for expression), we see a \emph{huge} degeneracy, as $l$ goes over integer values, and $n$ goes from $0$ to $\infty$ (note we have the constraint that $(n + l) \geq 0$ as $H$ is positively defined). We define:
+\begin{equation}
+    N \coloneqq n + l + 1
+\end{equation}
+and so we get:
+\begin{equation}
+    E_{0N} = \hbar \omega N.
+\end{equation}
+
+In HW1Q9, we go through the same calculation in a different gauge. We will see that there are infinitely many degenerate states, in a different basis when solved in a different gauge (but this is not a problem, as of course we can just express these different eigenfunctions in a different basis).
+
+\subsection{Addition of Angular Momentum - Motivation}
+In nature, we have many interactions that are not taken into account in the SE. For example, we have the magnetic moment-magnetic moment interaction:
+\begin{equation}
+    \Delta V = \frac{-\gv{\mu}_1 - \gv{\mu}_2}{r^3} \sim \v{S}_1 \cdot \v{S}_2
+\end{equation}
+this is the spin-spin interaction, also known as exchange forces in condensed matter physics. We also can have spin-orbit interactions of:
+\begin{equation}
+    \Delta V \sim \v{S} \cdot \v{L}
+\end{equation}
+There is no way to understand the periodic table, spectra, or transitions without understanding these interactions. What is the starting point when we ignore this interaction? When we discuss the hydrogen atom, we solve:
+\begin{equation}
+    H = \frac{\v{p}^2}{2m} - \frac{e^2}{r}.
+\end{equation}
+Here we see no sign of the spin-orbit interactions. We classify all states by three quantum numbers, $n$ (principle) $l$ (orbital) $m$ (projection of orbital). If we introduce spin (but not include it in the Hamiltonian), we can introduce a $s = 1/2, s_z = \pm 1/2$ into our state:
+\begin{equation}
+    \ket{n, l, m, s = \frac{1}{2}, s_z = \pm \frac{1}{2}}.
+\end{equation}
+Now we ask; is this a good or bad classification of states? Let us for take our spin orbit interaction:
+\begin{equation}
+    \Delta V = \v{S} \cdot \v{L}.
+\end{equation}
+Does spin commute or not commute with the spin orbit interaction? It of course does not as $S_i$ will not commute with the other components. So:
+\begin{equation}
+    [S_i, \v{S} \cdot \v{L}] \neq 0, [L_i, \v{S} \cdot \v{L}] \neq 0.
+\end{equation}
+This is why we need a better classification of states. We consider:
+\begin{equation}
+    \Delta V = \v{S}^{(1)} \cdot \v{S}^{(2)}
+\end{equation}
+we then have:
+\begin{equation}
+    [S^{(1)}_i, \Delta V] = [S_i^{(1)}, S_j^{(1)}S_j^{(2)}] = [S_i^{(1)}, S_j^{(1)}]S_j^{(2)} = i\e_{ijk}S_k^{(1)}S_j^{(2)}.
+\end{equation}
+We now do the computations for $S_2$:
+\begin{equation}
+    [S_i^{(2)}, \Delta V] = [S_i^{(2)}, S_j^{(1)}S_j^{(2)}] = S_j^{(1)}[S_i^{(2)}, S_j^{(2)}] = i\e_{ijk}S_j^{(1)}S_k^{(2)}.
+\end{equation}
+We now consider the following. If we introduce:
+\begin{equation}
+    \v{S}^{tot} = \v{S}^{(1)} + \v{S}^{(2)}
+\end{equation}
+then we see that $\v{S}^{tot}$ commutes with the interaction:
+\begin{equation}
+    [S_i^{(1)} + S_i^{(2)}, \Delta V] = i\e_{ijk}S_k^{(1)}S_j^{(2)} + i\e_{ijk}S_j^{(1)}S_k^{(2)}
+\end{equation}
+We now do a trick, where we exchange $j$ and $k$; it does not matter as we sum over all of them:
+\begin{equation}
+    [S_i^{(1)} + S_i^{(2)}, \Delta V] = i\e_{ijk}S_k^{(1)}S_j^{(2)} + i\e_{ikj}S_k^{(1)}S_j^{(2)}
+\end{equation}
+then we introduce a minus sign by swapping $j$ and $k$ in the Levi-Civita symbol:
+\begin{equation}
+    [S_i^{(1)} + S_i^{(2)}, \Delta V] = i\e_{ijk}S_k^{(1)}S_j^{(2)} - i\e_{ijk}S_k^{(1)}S_j^{(2)} = 0.
+\end{equation}
+So, we can deduce a better classification of our states:
+\begin{equation}
+    \ket{n, l, s = \frac{1}{2}, J, J_z}
+\end{equation}
+where:
+\begin{equation}
+    \v{J} = \v{L} + \v{S}.
+\end{equation}
+We will discuss this basis further next class.
