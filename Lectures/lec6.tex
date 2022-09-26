@@ -1,0 +1,138 @@
+\section{Addition of Angular Momentum, Continued}
+\subsection{Review of Last Class}
+We represent all magnetic-moment coupling interactions as:
+\begin{equation}
+    \Delta V = \v{S}^{(1)} \cdot \v{S}^{(2)}
+\end{equation}
+Where the coupling constant has been set to unity. We then found:
+\begin{equation}
+    [S_i^{(1)}, \Delta V] \neq 0, [S_i^{(2)}, \Delta V] \neq 0.
+\end{equation}
+But did find that the total angular momentum $S_i^{tot} = S_i^{(1)} + S_i^{(2)}$ did commute:
+\begin{equation}
+    [S_i^{tot}, \Delta V] = 0.
+\end{equation}
+From this, we concluded that the classification of hydrogen atom states based on the quantum numbers $\ket{n, l, m, s=1/2, s_z}$ was a bad classification; instead, a better classification is $\ket{n, l, s= 1/2, J, J_z}$, where:
+\begin{equation}
+    \v{J} = \v{L} + \v{S}.
+\end{equation}
+This is a good classification sense in the operators corresponding to each of the quantum numbers commute with each other and the Hamiltonian. Note that the $J_i$s also follow the angular momentum algebra:
+\begin{equation}
+    [J_i, J_j] = i\e_{ijk}J_k.
+\end{equation}
+This can be verified by their definition:
+\begin{equation}
+    [J_i, J_j] = [L_i + S_i, L_j + S_j] = [L_i, L_j] + [S_i, S_j] = i\e_{ijk}(L_k + S_k) = i\e_{ijk}J_k.
+\end{equation}
+Hence our general results proven previously for arbitrary angular momentum operators still hold, i.e.:
+\begin{equation}
+    [\v{J}^2, J_i] = 0
+\end{equation}
+and all of the commutation relations with $J_\pm, J_z$ etc.
+
+\subsection{Adding Two Spin-1/2 Particles}
+In practice, when adding up angular momenta we can just refer to tables (or computer programs) which tabulate Clebsch-Gordon coefficients, which tell us how states in the $\ket{s^{(1)}, s^{(2)}, s, s_z}$ basis (where $s$ is the joint spin) can  expanded in state in the $\ket{s^{(1)}, s_z^{(1)}, s^{(2)}, s_z^{(2)}}$ basis (and vise versa). We discuss the simplest case here, with $s^{(1)} = 1/2, s^{(2)} = 1/2$. Also from now on we suppress the $s^{(1)}, s^{(2)}$ as these always remain unchanged (always $1/2$). Also note the notation:
+\begin{equation}
+    \ket{\uparrow} \otimes \ket{\uparrow} = \ket{\uparrow\uparrow} \cong \m{1\\0} \otimes \m{1\\0} = \m{1\\0\\0\\0}.
+\end{equation}
+Can we immediately say how $\ket{\uparrow\uparrow}$ will be expressed in the $\ket{s, s_z}$ basis? Yes. 
+\begin{equation}
+    \ket{\uparrow \uparrow} \mapsto \ket{s = 1, s_z = + 1}.
+\end{equation}
+Why is $s = 2$ not possible here? This is because that would (of course) violate angular momentum conservation. The $\ket{\downarrow\downarrow}$ works out in the same way:
+\begin{equation}
+    \ket{\downarrow\downarrow} \mapsto \ket{s = 1, s_1 = -1}.
+\end{equation}
+We now consider applying the raising and lowering operators to these states. In particular, we apply them in two different forms. First, applying this in the joint basis, we know that:
+\begin{equation}
+    S_-\ket{\uparrow\uparrow} = \sqrt{2}\ket{s = 1, s_z = 0}
+\end{equation}
+The constant was determined by using the coefficients of the raising/lowering operators derived in the second class. Applying $S_-$ in the form $S_- = S_-^{(1)} + S_-^{(2)}$ we have:
+\begin{equation}
+    S_-\ket{\uparrow\uparrow} = (S_-^{(1)} + S_-^{(2)})\ket{\uparrow} = \ket{\downarrow\uparrow} + \ket{\uparrow\downarrow}.
+\end{equation}
+Where again the coefficients can be obtained by the general raising/lowering coefficient formula. Comparing the two expressions, we find:
+\begin{equation}
+    \ket{s = 1, s_z = 0} = \frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}}.
+\end{equation}
+
+Now, let's back up a bit. In the $\ket{s^{(1)}, s_z^{(1)}, s^{(2)}, s_z^{(2)}}$ basis, we have three basis states; $2 \times 2 = 4$ as each spin has two basis states (explicitly, a basis is $\ket{\uparrow\uparrow}, \ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}, \ket{\downarrow\downarrow}$). However, in our construction of the $\ket{s, s_z}$ basis, we have only constructed three states. What is the fourth?
+
+We need to find the last state. This last state will have $s = 0$ (this is the only possibility left). How do we construct it? We can find it via the following observation; the state $\ket{s = 0, s_z = 0}$ must be \emph{orthogonal to all of the other three states found so far, as it has a different quantum number $s$}. Note that it is immediate to see that:
+\begin{equation}
+    \braket{\uparrow\uparrow}{s=0, s_z = 0} = \braket{\downarrow\downarrow}{s=0, s_z=0} = 0
+\end{equation}
+as $\ket{s = 0, s_z = 0}$ must be constructed out of parts that have spin-$z$ projection zero, i.e. it must be constructed out of states $\ket{\uparrow\downarrow}$ and $\ket{\downarrow\uparrow}$ (which are orthogonal to $\ket{\uparrow\uparrow}$ and $\ket{\downarrow\downarrow}$). So, we find the coefficients $a, b$ in:
+\begin{equation}
+    \ket{s=0, s_z = 0} = a\ket{\uparrow\downarrow} + b\ket{\downarrow\uparrow}
+\end{equation}
+And we require this to be orthogonal to $\ket{s=1, s_z = 0}$, so:
+\begin{equation}
+    \frac{1}{\sqrt{2}}\left(\bra{\uparrow\downarrow} + \bra{\downarrow\uparrow}\right)\left( a\ket{\uparrow\downarrow} + b\ket{\downarrow\uparrow}\right)
+\end{equation}
+and after doing the computation (and normalization of the coefficients), I find that $a = 1/\sqrt{2}, b = -1/\sqrt{2}$ and so:
+\begin{equation}
+    \ket{s=0, s_z = 0} = \frac{\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow}}{\sqrt{2}}.
+\end{equation}
+So we have succeeded in constructing the four states in the $\ket{s, s_z}$ basis. Our classification is complete.
+
+\subsection{Checking Joint Set Properties}
+Let us check that indeed the $\ket{s=0, s_z = 0}$ state we constructed has spin zero. We consider the operator:
+\begin{equation}
+    \v{S}^2 = \left(\v{S}^{(1)} + \v{S}^{(2)}\right)^2 = (\v{S}^{(1)})^2 + (\v{S}^{(2)})^2 + 2\v{S}^{(1)} \cdot \v{S}^{(2)} =  (\v{S}^{(1)})^2 + (\v{S}^{(2)})^2 + 2S_z^{(1)}S_z^{(2)} + S_+^{(1)}S_-^{(2)} + S_-^{(1)}S_+^{(2)}
+\end{equation}
+Since the joint spin satisfies the angular momentum algebra, we already expect that:
+\begin{equation}
+    \v{S}^2\ket{s = 1, s_z = 0} = 1(1+1)\ket{s=1, s_z = 0} = 2\ket{s=1, s_z = 0}
+\end{equation}
+\begin{equation}
+    \v{S}^2\ket{s=0, s_z=0} = 0.
+\end{equation}
+Let's apply $\v{S}^2$ to $\ket{\uparrow\downarrow}$. We go term by term:
+\begin{equation}
+    (\v{S}^{(1)})^2\ket{\uparrow\downarrow} = \frac{3}{4}\ket{\uparrow\downarrow}
+\end{equation}
+\begin{equation}
+    (\v{S}^{(2)})^2\ket{\uparrow\downarrow} = \frac{3}{4}\ket{\uparrow\downarrow}
+\end{equation}
+\begin{equation}
+   2S_z^{(1)}S_z^{(2)}\ket{\uparrow\downarrow} = 2\frac{1}{2}\cdot \frac{-1}{2}\ket{\uparrow\downarrow} = -\frac{1}{2}\ket{\uparrow\downarrow}
+\end{equation}
+\begin{equation}
+    S_+^{(1)}S_-^{(2)}\ket{\uparrow\downarrow} = 0.
+\end{equation}
+\begin{equation}
+    S_-^{(1)}S_+^{(2)}\ket{\uparrow\downarrow} = \ket{\downarrow\uparrow}
+\end{equation}
+so in total:
+\begin{equation}
+    \v{S}^2\ket{\uparrow\downarrow} = \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}.
+\end{equation}
+And analogously, we find:
+\begin{equation}
+    \v{S}^2\ket{\uparrow\downarrow} = \ket{\downarrow\uparrow} + \ket{\uparrow\downarrow}.
+\end{equation}
+so then:
+\begin{equation}
+    \v{S}^2\left(\ket{\downarrow\uparrow} + \ket{\uparrow\downarrow}\right) = 2\left(\ket{\downarrow\uparrow} + \ket{\uparrow\downarrow}\right)
+\end{equation}
+which is exactly what we predicted.
+
+\subsection{Adding a Spin-1 and Spin-1/2 Particle}
+We take $l = 1, s = \frac{1}{2}$, and take $\v{J} = \v{L} + \v{S}$. The number of states is $(2l + 1)(2s + 1) = 3\cdot 2 = 6$. We immediately have:
+\begin{equation}
+    \ket{l_z = 1, s_z = \frac{1}{2}} = \ket{J = \frac{3}{2}, J_z = \frac{3}{2}}.
+\end{equation}
+There are four states total with $J = \frac{3}{2}$ ($J_z = \frac{3}{2}, \frac{1}{2}, \frac{-1}{2}, \frac{-3}{2}$) and two more states with $J = \frac{1}{2}$ ($J_z = \frac{1}{2}, \frac{-1}{2}$). For the rest of the states with $J = \frac{3}{2}$, we can apply $J_-$ to the maximal projection state with $J_z = \frac{3}{2}$ above.
+\begin{equation}
+    J_-\ket{l_z = 1, s_z = \frac{1}{2}} \sim \ket{J = \frac{3}{2}, J_z = \frac{1}{2}}
+\end{equation}
+Explicitly:
+\begin{equation}
+    (L_- + S_-)\ket{l_z = 1, s_z = \frac{1}{2}} = \sqrt{2}\ket{l_z = 0, s_z = \frac{1}{2}} + 1\ket{l_z = 1, s_z = -\frac{1}{2}}
+\end{equation}
+So normalizing:
+\begin{equation}
+    \ket{J = \frac{3}{2}, J_z = \frac{1}{2}} = \frac{\sqrt{2}\ket{l_z = 0, s_z = \frac{1}{2}} + 1\ket{l_z = 1, s_z = -\frac{1}{2}}}{\sqrt{3}}
+\end{equation}
+and we can go on. Next time, we briefly discuss the general case, and how to construct the wavefunctions of the hydrogen atom properly.
