@@ -1,0 +1,145 @@
+\section{Addition of Angular Momentum (Concluded), Time-Independent Perturbation Theory}
+
+\subsection{General Theory of Addition of Angular Momentum}
+Last time, we covered a few simple examples (spin-1/2 + spin-1/2 and spin-1/2 + spin-1) of angular momentum addition. Now, we proceed with a brief discussion of the general case, where we add a spin-$s_1$ particle to a spin-$s_2$ particle. We then have the relation:
+\begin{equation}
+    \ket{s m} = \sum_{m = m_1 + m_2} C_{m m_1 m_2}^{s s_1 s_2}\ket{s_1m_1}\ket{s_2m_2}
+\end{equation}
+where $s$ is the joint spin, $m = m_1 + m_2$ is the joint spin-$z$ component, and the $C_{m m_1 m_2}^{s s_1 s_2}$s are the Clebsch-Gordon coefficients (a table of which can be found in literally any quantum mechanics textbook). 
+
+We return to the question of degeneracy. The number of states in the $\ket{s_1m_2}\ket{s_2m_2}$ basis is given by $(2s_1 + 1)(2s_2 + 1)$. We can then count the degeneracy in the $\ket{sm}$ basis as:
+\begin{equation}
+    (2s_1 + 1)(2s_2 + 1) = \sum_{s_{min} = \abs{s_1 - s_2}}^{s_{max} = \abs{s_1 + s_2}}(2s+1)
+\end{equation}
+Let's look at this formula for a couple examples. For $s_1 = s_2 = \frac{1}{2}$ we have:
+\begin{equation}
+    2 \cdot 2 = 1 + 3
+\end{equation}
+w here the first term corresponds to $s = 0$ and the second term corresponds to $s = 1$. For $s_1 = \frac{1}{2}$ and $s_2 = 1$ we have:
+\begin{equation}
+    3 \cdot 2 = 2 + 4
+\end{equation}
+where the first term corresponds to $s = \frac{1}{2}$ and the second term corresponds to $s = \frac{3}{2}$. We also discussed why we cannot exceed $s = \abs{s_1 + s_2}$; it comes down to rotational symmetry and angular momentum conservation.
+
+In general, do not waste time computing CGCs (although the procedure to do so was illustrated last class, and you have one example in the homework); people have tabulated all of these coefficients already, and you can look them up.
+
+\subsection{Classification of Hydrogen Atom States}
+Normally, when we do computations with the Hydrogen atom, we have $\ket{n, l, m, s=1/2, s_z}$. But this is not a good basis (discussed last class) so we consider instead the basis $\ket{n, l, s=1/2, J, J_z}$. We use spectroscopic notation $n\prescript{2s+1}{}{L}_J$. For the hydrogen atom we always have $s = 1/2$ so we can omit this and write $nL_J$. We can write the energy levels as per the diagram below:
+
+\begin{table}[htbp]
+    \centering\begin{tabular}{|c|c|c|c|}
+        \hline Old Classification & Degeneracy Counting (Old) & New classification & Degeneracy Counting (New)
+        \\ \hline 3s3p3d & 2 + 6 + 10 = 18 & $3s_{1/2}$ (2) $3p_{1/2}$ (2) $3p_{3/2}$ (4) $3d_{3/2}$ (4) $3d_{5/2}$ (6) & 2 + 2 + 4 + 4 + 6 = 18
+        \\ \hline 2s2p & 2 + 6 = 8 & $2s_{1/2}$ (2) $2p_{1/2}$ (2) $2p_{3/2}$ (4) & 2 + 2 + 4 = 8
+        \\ \hline 1s & 2 = 2 & $1s_{1/2}$ (2) & 2 = 2
+        \\ \hline
+    \end{tabular}
+    \caption{Spectroscopic classificatio of states of the hydrogen atom. On the left is the old classification, with $s$ having two states (corresponding to $l = 0$ and so $J = 1/2$ (2)), $p$ having six states (corresponding to $l = 1$ and so $J = 3/2$ (4) and $J = 1/2$ (2)), and $d$ having 10 states (corresponding to $l = 2$ and so $J = 5/2$ (6), $J = 3/2$ (4) and $J = 1/2$ (2)). On the right is the new classification, which quantifies the states according to our better new set of quantum numbers. The degeneracy in the two cases is the same.}
+    \label{table-Hclassification}
+\end{table}
+
+A fun little aside; D-wave (the quantum computing company in Burnaby) got its name from the d-waves inside high-$T_c$ superconductors, which they were working on when the company was started.
+
+5 second question: Why is there no $d = 1/2$? Because the minimum is $s = \abs{s_1 - s_2} = \abs{2 - \frac{1}{2}} = \frac{3}{2}$. 
+
+In conclusion, we see that the true classification is based on the joint angular momentum. Let us see how we construct the wavefunctions corresponding to different states:
+\begin{equation}
+    1s_{1/2} \cong R_{10}Y_0^0\m{1\\0}.
+\end{equation}
+How do we construct the other states? We can use Clebsch-Gordon coefficients:
+\begin{equation}
+    2p_{1/2}(J_z = \frac{1}{2}) = \sqrt{\frac{2}{3}}\ket{1\frac{-1}{2}} - \sqrt{\frac{1}{3}}\ket{0\frac{1}{2}} \cong \sqrt{\frac{2}{3}}R_{21}Y_1^1\m{0\\1} - \sqrt{\frac{1}{3}}R_{21}Y_1^0\m{1\\0}.
+\end{equation}
+The probability of finding spin-up is $\frac{1}{3}$. The probability of finding spin-up in some region can be found by integrating $R_{21}Y_1^0$ over a given spatial region. The probability of finding total angular momentum can also be calculated by reversing the Clebsch-Gordon table (it can be read both ways, depending on whether one goes by column or by row).
+
+\subsection{Non-Degenerate Time-Independent Perturbation Theory}
+Why do we want PT? Many systems are not analytically solvable\footnote{Indeed, the solvable problems are the free particle, the infinite box, the oscillator, and the hydrogen atom.}, but in many cases we have some kind of small parameter, for which we can treat as a perturbation and get an approximate result. Our starting point is the Hamiltonian:
+\begin{equation}
+    H = H^{(0)} + \lambda H^{(1)}
+\end{equation}
+where $H^{(0)}$ is an analytically solvable Hamiltonian, and $\lambda$ is a ``small'' parameter (we will comment on what this means later). We have the eigenfunctions/eigenenergies of $H^{(0)}$:
+\begin{equation}
+    H^{(0)}\psi^{(0)}_n = E_n^{(0)}\psi_n^{(0)}
+\end{equation}
+We expand the eigenfunctions and eigenenergies of $H$ in $\lambda$:
+\begin{equation}
+    \psi_n = \psi_n^{(0)} + \lambda \psi_n^{(1)} + \ldots, \quad E_n = E_n^{(0)} + \lambda E_n^{(1)} + \ldots
+\end{equation}
+The eigenvalue equation then reads:
+\begin{equation}\label{eq-pertexpansion}
+    (H^{(0)} + \lambda H^{(1)})(\psi_n^{(0)} + \lambda \psi_n^{(1)} + \ldots) = (E_n^{(0)} + \lambda E_n^{(1)} + \ldots)(\psi_n^{(0)} + \lambda \psi_n^{(1)} + \ldots).
+\end{equation}
+We can then collect the terms in orders of $\lambda$. The $\lambda^0 = 1$ terms read:
+\begin{equation}
+    H^{(0)}\psi^{(0)}_n = E_n^{(0)}\psi_n^{(0)}
+\end{equation}
+and of course these are just the eigenvalues/eigenfunctions of the exactly solvable Hamiltonian $H^{(0)}$. If we collect the terms in order $\lambda^1$, we find:
+\begin{equation}
+    E_n^{(1)} = \bra{\psi_n^{(0)}}H^{(1)}\ket{\psi_n^{(0)}}
+\end{equation}
+and if we collect the terms in order $\lambda^2$, we find:
+\begin{equation}
+    E_n^{(2)} = \sum_{m \neq n}\frac{\abs{\bra{\psi_m^{(0)}}H^{(1)}\ket{\psi_n^{(0)}}}}{E_m^{(0)} - E_n^{0}}.
+\end{equation}
+However we notice that when we have degeneracy, the second order energy corrections explode as $E_m^{(0)} = E_n^{(0)}$ for some $m \neq n$. So, our standard procedure only works for non-degenerate systems. However many systems of physical interest (such as the hydrogen atom) exhibit a large amount of degeneracy, so let's look at how to treat this problem.
+
+\subsection{Degenerate Time-Independent Perturbation Theory}
+If we have a degeneracy, then:
+\begin{equation}
+    H^{(0)}\psi_{a, b}^{(0)} = E^{(0)}\psi_{a, b}^{(0)}
+\end{equation}
+for some $a, b$. We can then immediately convince ourselves that:
+\begin{equation}
+    E_a^{(1)} = \bra{\psi_a^{(0)}}H^{(1)}\ket{\psi_a^{(0)}}, \quad E_b^{(1)} = \bra{\psi_b^{(0)}}H^{(1)}\ket{\psi_b^{(0)}}
+\end{equation}
+is wrong. Why? Because if we can use $a, b$, then we can use an arbitrary superposition:
+\begin{equation}\label{eq-degenlinearcomb}
+    \tilde{\psi}^{(0)} = \alpha\psi_a^{(0)} + \beta\psi_b^{(0)}
+\end{equation}
+but then the naive first-order correction could give any answer we want depending on what linear combination we take; of course this is wrong (things should be unique in physics). So let us repair this. We consider the case where the ground state is degenerate (but this procedure can be easily generalized). We go back to our expansion in Eq. \eqref{eq-pertexpansion} and replace $\psi_n^{(0)}$ with the linear combination \eqref{eq-degenlinearcomb}. We introduce matrix elements:
+\begin{equation}
+    \begin{split}
+        T_{aa} &= \bra{\psi_0^a}H^{(1)}\ket{\psi_0^a}
+        \\T_{ab} &= \bra{\psi_0^a}H^{(1)}\ket{\psi_0^b}
+        \\T_{ba} &= \bra{\psi_0^b}H^{(1)}\ket{\psi_0^a}
+        \\T_{bb} &= \bra{\psi_0^b}H^{(1)}\ket{\psi_0^b}
+    \end{split}
+\end{equation}
+Having introduced this, we can proceed precisely the same way that we did in the non-degenerate case. If we do so, the equations we obtain are:
+\begin{equation}
+    \begin{split}
+        &\alpha T_{aa} + \beta T_{ab} - \alpha E^{(1)} = 0
+        \\ &\beta(T_{bb} - E^{(1)}) + \alpha T_{ba} = 0.
+    \end{split}
+\end{equation}
+The claim now is that these equations cannot be satisfied for arbtirary $\alpha, \beta$; in particular, we require that:
+\begin{equation}
+    \det\m{T_{aa} - E^{(1)} & T_{ab} \\ T_{ba} & T_{bb} - E^{(1)}} = 0.
+\end{equation}
+i.e. $E^{(1)}$ is a eigenvalue of the $T$-matrix corresponding to eigenvector $\m{\alpha\\\beta}$. After going through the linear algebra, we find:
+\begin{equation}
+    E^{(1)}_\pm = \frac{1}{2}\left(T_{aa} + T_{bb}\right) \pm \frac{1}{2}\sqrt{\left(T_{aa} - T_{bb}\right)^2 + 4T_{ab}T_{ba}}
+\end{equation}
+This looks awful, and we have only dealt with a two-fold degeneracy! This looks very complicated, but we gave a theorem that shows that this is not so.
+
+First, notice that if $T_{ab} = 0$, then:
+\begin{equation}
+    \begin{split}
+        E_+ &= \frac{1}{2}(T_{aa} + T_{bb}) + \frac{1}{2}(T_{aa} - T_{bb}) = T_{aa}
+        \\ E_- &= T_{bb}
+    \end{split}
+\end{equation}
+In other words, if the off-diagonals are zero, we can go back to our non-degenerate perturbation theory formula and calculate:
+\begin{equation}
+    E_{\pm} = T_{aa/bb} = \bra{\psi_0^{a/b}}H^{(1)}\ket{\psi_0^{a/b}}
+\end{equation}
+This observation motivates the theorem:
+
+\textbf{Theorem.} Suppose there exists $A$ such that $[A, H^{(1)}] = 0$ and $A\ket{\psi_a} = a\ket{\psi_a}$ and $A\ket{\psi_b} = b\ket{\psi_b}$ with $a \neq b$, then $T_{ab} = 0$. 
+
+\emph{Proof.}
+
+\begin{equation}
+    0 = \bra{\psi_b}0\ket{\psi_a} = \bra{\psi_b}[A, H^{(1)}]\ket{\psi_a} = \bra{\psi_b}AH^{(1)} - H^{(1)}A\ket{\psi_a} = (b-a)\bra{\psi_b}H^{(1)}\ket{\psi_a}.
+\end{equation}
+But since $a \neq b$, $\bra{\psi_b}H^{(1)}\ket{\psi_a} = T_{ab}$ must vanish. \qed
