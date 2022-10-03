@@ -1,0 +1,123 @@
+\section{Time-Independent Perturbation Theory Continued}
+\subsection{Review of Last Lecture}
+Let us reformulate the most important lesson from the last class. We say that if we find an operator $A$ such that $[A, H'] = 0$, such that $A\ket{\psi_a} = a\ket{\psi_a}$ and $B\ket{\psi_b} = b\ket{\psi_b}$ (i.e. the states of interest are eigenstates of the operator) then $T_{ab} = 0$. This is desireable as we have the matrix:
+\begin{equation}
+    \m{T_{aa} - E^{(1)} & T_{ab} \\ T_{ba} & T_{bb} - E^{(1)}} =  \m{T_{aa} - E^{(1)} & 0 \\ 0 & T_{bb} - E^{(1)}} 
+\end{equation}
+and so we have a trivial computation for $a$ and for $b$. We can just use the non-degenerate perturbation theory results:
+\begin{equation}
+    E_{a}^{(1)} = \bra{\psi_a}H'\ket{\psi_a}, \quad E_b^{(1)} = \bra{\psi}H'\ket{\psi}.
+\end{equation}
+So the hard problem of doing perturbation theory reduces to a trivial calculation.
+
+Note that this only works in the case we have a finite number of states; if we have an infinite degeneracy, this method does not work. Working with infinities is hard; so for example in QFT we remove them via a procedure known as normalization.
+
+\subsection{Comparing the two methods}
+We consider the perturbing Hamiltonian:
+\begin{equation}
+    H' = \lambda\v{S}^{(1)} \cdot \v{S}^{(2)}.
+\end{equation}
+We start by classifying all of our states; we have $\set{\ket{\uparrow\uparrow}, \ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}, \ket{\downarrow\downarrow}}$. We construct our matrix:
+\begin{equation}
+    T = \lambda\m{\frac{1}{4}& 0&0& 0\\ 0& -\frac{1}{4}& \frac{1}{2}& 0\\ 0& \frac{1}{2}& -\frac{1}{4}& 0\\0 & 0& 0& \frac{1}{4}}
+\end{equation}
+Ok, why are the borders of this matrix zero?
+\begin{equation}
+    \begin{split}
+        \bra{\uparrow\uparrow}H'\ket{\uparrow\downarrow} &= \bra{\uparrow\uparrow} \lambda\v{S}^{(1)} \cdot \v{S}^{(2)}\ket{\uparrow\downarrow}
+        \\ &= \bra{\uparrow\uparrow} \lambda(S_z^{(1)}S_z^{(1)} + \frac{1}{2}S_+^{(1)}S_-^{(2)} + \frac{1}{2}S_-^{(1)}S_+^{(2)})\ket{\uparrow\downarrow}
+        \\ &= 0
+    \end{split}
+\end{equation}
+The $S_z$ term is zero by the orthogonality of the the two basis states (the $S_z$s do not change the basis states; they are eigenstates of $S_z$). The $S_+^{(1)}$ kills the $\ket{\uparrow}^{(1)}$ so it too is zero. Finally, the $S_-^{(1)}S_+^{(2)}$ converts $\ket{\uparrow\downarrow}$ to $\ket{\downarrow\uparrow}$ but this too is orthogonal to $\ket{\uparrow\uparrow}$ and so it vanishes. We can proceed via the same methods to compute the other matrix elements. Note that since $H'$ is Hermitian, this saves many computations as well. We therefore have:
+\begin{equation}
+    \abs{T_{ab} - \lambda E^{(1)}} = 0 \implies \left|\m{-\frac{\lambda}{4} - E^{(1)} & \frac{1}{2} \\ \frac{1}{2} & -\frac{1}{4} - E^{(1)}}  \right| = 0
+\end{equation}
+So we obtain the polynomial expression:
+\begin{equation}
+    \left(E^{(1)} + \frac{\lambda}{4}\right)^2 - \frac{\lambda^2}{4} = 0
+\end{equation}
+This has two solutions, $E^{(1)}_1 = \frac{\lambda}{4}$ and $E^{(1)}_2 = -\frac{3}{4}\lambda$. So the first order energy corrections are:
+\begin{equation}
+    E^{(1)} = -\frac{\lambda}{4} \pm \frac{\lambda}{2}
+\end{equation}
+Now, let's go back to our $T$ matrix and find the eigenstates by substituting back $E^{(1)}_1$ and $E^{(1)}_2$ back in:
+\begin{equation}
+    \m{-\frac{\lambda}{4} - E^{(1)} & \frac{1}{2} \\ \frac{1}{2} & -\frac{1}{4} - E^{(1)}}\m{\alpha\\\beta} = \v{0}
+\end{equation}
+What do we expect to get from our calcualtion? We would expect the singlet and triplet states. If we substitute back in $E^{(1)}_1 = \lambda/4$, we should have $\alpha = \beta = \frac{1}{\sqrt{2}}$ and we have the triplet state $(\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow})/\sqrt{2}$:
+\begin{equation}
+    \m{-\lambda/2 & \lambda/2 \\ \lambda/2 & -\lambda/2}\m{\alpha\\\beta} = \v{0} \implies \m{\alpha\\\beta} = \frac{1}{\sqrt{2}}\m{1\\1}
+\end{equation}
+If we substitute back in $E^{(1)}_2 = -3\lambda/4$, we have the singlet state with $\alpha = -\beta = \frac{1}{\sqrt{2}}$:
+\begin{equation}
+    \m{\lambda/2 & \lambda/2 \\ \lambda/2 & \lambda/2}\m{\alpha\\\beta} = \v{0} \implies \m{\alpha\\\beta} = \frac{1}{\sqrt{2}}\m{1\\-1}
+\end{equation}
+This concludes the difficult way of doing things. Now we can use our theorem instead. We know that the operator $\v{S} = \v{S}^{(1)} + \v{S}^{(2)}$ commutes with the perturbing Hamiltonian:
+\begin{equation}
+    [\v{S}^{(1)} + \v{S}^{(2)}, \lambda\v{S}^{(1)} \cdot \v{S}^{(2)}] = 0.
+\end{equation}
+and so we can classify our states according to $\v{S}$ and then simply apply the non-degenerate pertubation theory result. Of course we already know that:
+\begin{equation}
+    S_z\ket{\uparrow\uparrow} = \ket{\uparrow\uparrow}, \quad S_z\ket{\downarrow\downarrow} = -\ket{\downarrow\downarrow}
+\end{equation}
+But we already constructed the other states which are the eigenstates of the $S_z = S_z^{(1)} + S_z^{(2)}$ operator:
+\begin{equation}
+    \ket{s = 1, s_z = 0} = \frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}}, \quad \ket{s = 0, s_z = 0} = \frac{\ket{\uparrow\downarrow} - \ket{\downarrow\uparrow}}{\sqrt{2}}
+\end{equation}
+Now, let us proceed with the calculation. We can write the perturbing Hamiltonian as:
+\begin{equation}
+    H' = \lambda \frac{1}{2}\left[\v{S}^2 - \v{S}^{(1)^2}  - \v{S}^{(2)^2}\right]
+\end{equation}
+And for the triplet case, we have:
+\begin{equation}
+    \bra{\text{triplet}}H'\ket{\text{triplet}} = \frac{\lambda}{2}\left[2 - \frac{3}{4} - \frac{3}{4}\right] = \frac{\lambda}{4}
+\end{equation}
+And this is exactly what we got with the arduous method. And for the singlet case, we have:
+\begin{equation}
+    \bra{\text{singlet}}H'\ket{\text{singlet}} = \frac{\lambda}{2}\left[0 - \frac{3}{4} - \frac{3}{4}\right] = -\frac{3\lambda}{4}.
+\end{equation}
+So let's review; we did a computation for a simple case of a perturbing Hamiltonian. We did the brute force approach, and we did the slick approach using the theorem. The results were consistent.
+
+\subsection{Wigner-Eckart Theorem}
+The expectation values of $S_z = S_z^{(1)} + S_z^{(2)}$ are trivial:
+\begin{equation}
+    \bra{s = 1, s_z = 1}S_z\ket{s = 1, s_z = 1} = 1
+\end{equation}
+Now, a less trivial question; what is the expectation value of:
+\begin{equation}
+    \bra{s = 1, s_z = 1}S_z^{(1)}\ket{s = 1, s_z = 1} = \frac{1}{2}
+\end{equation}
+this is also not hard as we know what the expression is in the original basis. We can do a similar calculation:
+\begin{equation}
+    \bra{s = 1, s_z = 0}S_z^{(1)}\ket{s = 1, s_z = 0} = \left(\frac{\bra{\uparrow\downarrow} + \bra{\downarrow\uparrow}}{\sqrt{2}}\right)S_z^{(1)} \left(\frac{\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}}{\sqrt{2}}\right) = 0
+\end{equation}
+and the same holds for the singlet state. But we could anticipate this without doing any computation. This is because:
+\begin{equation}
+    \bra{s = 1, s_z = 0}\v{S}^{(1)}\ket{s = 1, s_z = 0} \sim \bra{s = 1, s_z = 0}\v{S}\ket{s = 1, s_z = 0}
+\end{equation}
+The claim is that this is the only thing it could be proportional to, as it is the only vector we work with. I don't understand Ariel's argument here for why this is true; I think I need to understand the proof of the following theorem to see why it would be true. We also have a theorem to formalize this, known as the \emph{Wigner-Eckart Theorem}:
+\begin{equation}
+    \bra{s,s_z}\v{S}^{(1)} \ket{s,s_z} = a\bra{s, s_z}\v{S}\ket{s, s_z}
+\end{equation}
+but note the theorem applies more broadly to vectors than spin. Here $a$ is a number that does not depend on projection. It is a very powerful theorem, as we can do a projection to any state we want, find out what $a$ is, and then apply this generally. For us, the convenient basis to pick is the basis we are used to. So, we compute $a$ with:
+\begin{equation}
+    \bra{s,s_z}\v{S} \cdot \v{S}^{(1)}\ket{s,s_z} = a\bra{s, s_z}\v{S}^2\ket{s, s_z}
+\end{equation}
+But expanding things out we have:
+\begin{equation}
+    \v{S} \cdot \v{S}^{(1)} = \v{S}^{(1)^2} + \v{S}^{(1)}\cdot\v{S}^{(2)} = \v{S}^{(1)^2} + \frac{1}{2}\left[\v{S}^2 - \v{S}^{(1)^2} - \v{S}^{(2)^2}\right] = \frac{1}{2}\left[\v{S}^2 + \v{S}^{(1)^2} - \v{S}^{(2)^2}\right]
+\end{equation}
+We can then compute the coefficient $a$ as:
+\begin{equation}
+    \frac{1}{2}\cdot 2 = a \cdot 2
+\end{equation}
+So we can go back to our formula now:
+\begin{equation}
+    \bra{s,s_z}\v{S}^{(1)} \ket{s,s_z} = \frac{1}{2}\bra{s,s_z}\v{S}\ket{s, s_z}
+\end{equation}
+So we can obtain the expectation values of $S_z$ in a much slicker way:
+\begin{equation}
+    \bra{s,s_z}S_z^{(1)}\ket{s,s_z} = \frac{1}{2}\bra{s, s_z}S_z\ket{s, s_z}
+\end{equation}
+and we can reproduce all of the results we had previously, but the calculation is now immediate. We do this to simplify our life; we can skip the whole song and dance of using Clebsch-Gordon coefficients to convert bases.
