@@ -1,0 +1,130 @@
+\section{Corrections to the Hydrogen Atom}
+\subsection{Units and Numbers}
+We introduce some numbers we will be using to do some numerical calculations. Our formula for the Hydrogen atom looks like:
+\begin{equation}
+    H^{(0)} = \frac{\v{p}^2}{2m} - \frac{e^2}{r}
+\end{equation}
+Note we have used Gaussian units; going from SI to Gaussian looks like $\frac{e^2}{4\pi\e_0} \to e^2$. We have the \emph{Rydberg}:
+\begin{equation}
+    \si{Ry} = \frac{me^4}{2\hbar^2} = 13.6\si{eV}
+\end{equation}
+And the Bohr radius:
+\begin{equation}
+    a_B = \frac{\hbar^2}{me^5} = 0.5 \times 10^{-5}\si{cm}
+\end{equation}
+The energies of the hydrogen atom are given by:
+\begin{equation}
+    E_n = \si{Ry}\left(-\frac{1}{n^2}\right)
+\end{equation}
+where $0 \leq l \leq n$ and $-l \leq m \leq l$. We have the Bohr magneton:
+\begin{equation}
+    \mu_B = \frac{+\abs{e}\hbar}{2mc} = 5.8 \times 10^{-5}\frac{\si{eV}}{\si{T}}
+\end{equation}
+where:
+\begin{equation}
+    1\si{T} = 10^4\si{Gauss}
+\end{equation}
+A comment; some places may write $\mu_B = \frac{\abs{e}}{2m}$. The $\hbar$ comes from our choice of where to put the $\hbar$s in angular momentum. The $c$ comes in from Gaussian units. Finally we have the fine structure coupling constant:
+\begin{equation}
+    \alpha = \frac{e^2}{\hbar c} = \frac{1}{137}
+\end{equation}
+We proceed to consider a variety of corrections to the energies of the hydrogen atom. We start by order-of-magnitude estimates, and then we will do actual computations (e.g. perturbation theory). We do this because we can only analytically solve the simple hydrogen atom; we can use this as our starting point and work out corrections that come from various (important!) physical effects.
+
+\subsection{Corrections - Order of Magnitude Estimates}
+
+\subsubsection{Relativistic Corrections}
+The correct formula for the kinetic energy is not $T = \frac{p^2}{2m}$, but rather:
+\begin{equation}
+    T = \sqrt{(pc)^2 + (mc^2)^2} - mc^2 = mc^2\sqrt{1 + \frac{(pc)^2}{(mc^2)^2}} - mc^2
+\end{equation}
+We can taylor expand the last term using $(1+x)^{1/2} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \ldots$ (Binomial series):
+\begin{equation}
+    T \approx mc^2\left[1 + \frac{p^2}{m^2c^2}\frac{1}{2} - \frac{1}{8}\frac{p^4}{m^4c^4}\right] = mc^2 + \frac{p^2}{2m} - \frac{1}{8}\frac{p^4}{m^3c^2}
+\end{equation}
+So our relativistic correction to the Hamiltonian is:
+\begin{equation}
+    H^{(1)}_{rel} = -\frac{1}{8}\frac{p^4}{m^3c^2}
+\end{equation}
+We can approximate the kinetic energy as half the total energy (assuming potential and kinetic contribute about the same)
+\begin{equation}
+    \frac{p^2}{2m} \sim \frac{1}{2}\si{Ry} = \frac{1}{2}\left(\frac{me^4}{2\hbar^2}\right) \implies p^2 \sim \frac{m^2e^4}{2\hbar^2}
+\end{equation}
+We then have:
+\begin{equation}
+    \Delta E^{(1)} \sim \left(\frac{m^2e^4}{\hbar^2}\right)^2\frac{1}{m^3c^2} \sim \frac{me^4}{\hbar^2}\left(\frac{e^2}{\hbar c}\right)^2 \sim \alpha^2 \si{Ry}
+\end{equation}
+Note we want to always express our results in terms of dimensionless numbers times our energy scale. So we find that the correction is $\sim 10^{-5}$, which is indeed order of magnitude that we see when we do experiments. Now, we consider:
+\begin{equation}
+    \frac{p^2}{(mc)^2} \sim \frac{m^2e}{\hbar^2m^2c^2} \sim \alpha^2
+\end{equation}
+and therefore:
+\begin{equation}
+    \frac{v}{c}\sim \alpha
+\end{equation}
+so although we are doing NRQM, since $v \sim 10^{-3}c$ the velociities are still quite large.
+
+\subsubsection{Spin-Orbit Correction}
+The spin orbit coupling has the approximate the energy:
+\begin{equation}
+    \frac{\gv{\mu}_s \cdot \gv{\mu}_L}{r^3} \sim \left(\frac{e\hbar}{mc}\right)^2\left(\frac{me^2}{\hbar^2}\right)^3 = \left(\frac{me^4}{\hbar^2}\right)\left(\frac{e^4}{\hbar^2c^2}\right)\alpha^2\si{Ry}
+\end{equation}
+where the $\sim 1/r^3$ comes from the dipole-dipole interaction (recall classical E\&M) and we take $r \sim a_B$. 
+
+\subsubsection{Electron-Proton (Hyperfine) Correction}
+\begin{equation}
+    \frac{\gv{\mu}_e \cdot \gv{\mu}_p}{r^3} \sim \alpha^2\si{Ry}\left(\frac{m_e}{m_p}\right) = 10^{-3}\alpha^2\si{Ry}
+\end{equation}
+where we replace one $m$ with $m_p$ in the previous approximation. This is of great importance to astrophysics; it corresponds to the 21cm line; we will discuss this in more detail soon, but this is effect we cannot observe on a lab on Earth but in galaxies. Much of what we know about the universe is based on this. We call this correction the hyperfine structure and the former two as fine structure as we have an additional supression by $10^{-3}$ here.
+
+What other corrections are there? (There are of course corrections from the Earth's magnetic field etc. which are important for the Zeeman effect, but let's assume we're just looking at a hydrogen atom in a vacuum for now). One is a finite size effect; the proton is not truly pointlike!
+
+\subsubsection{Finite Size Effects}
+The radius of the proton is $R \sim 10^{-13}\si{cm}$. Compare this to the Bohr radius $a_B \sim 10^{-8}\si{cm}$. How do we estimate? The integral:
+\begin{equation}
+    \int_0^R \frac{e^2}{r}r^2 dr
+\end{equation}
+will of course be wrong as we are integrating ``within'' the proton. This can be estimated to be:
+\begin{equation}
+    \int_0^R \frac{e^2}{r}r^2 dr \sim \si{Ry}\left(\frac{R^2}{a_B^2}\right)
+\end{equation}
+
+Another correction (Which we will not consider, as it belongs to a QFT course and not here...) we could have virtual pair production and this would of course change our Green's functions etc. but we say no more about this.
+
+\subsubsection{Proton Motion}
+Another effect is the motion of the proton. We should really use the reduced mass in everything:
+\begin{equation}
+    m = \frac{m_em_p}{m_e + m_p} \sim \frac{m_em_p}{m_p} =  m_e
+\end{equation}
+but we neglect this.
+
+\subsection{Relativistic Correction - Computation}
+We have the perturbing Hamiltonian:
+\begin{equation}
+    H^{(1)}_{rel} = -\frac{1}{8}\frac{p^4}{m^3c^2}
+\end{equation}
+And we have already solved the Schrodinger equation:
+\begin{equation}
+    H^{(0)}\ket{n,l,m,s=1/2, s_z} = E^{(0)}_n\ket{n,l,m,s=1/2, s_z}
+\end{equation}
+where:
+\begin{equation}
+    E_n = \frac{me^4}{2\hbar^2}\left(-\frac{1}{n^2}\right)
+\end{equation}
+So we can write the relativistic corrections as:
+\begin{equation}
+    \Delta E^{(1)}_{rel} = \bra{n, l, m, s, s_z}H^{(1)}_{rel}\ket{n, l, m, s, s_z}
+\end{equation}
+Two questions: why do we use perturbation theory without degeneracy here? The answer is because $p^4$ commutes with everything we have already have, so we can use the theorem last class which tells us we can just use the non-degnerate perturbation theory results. Another question; we have $p^4 \sim (-i\hbar \nabla)^4$ so we have a crazy number of differentiation. What can we do? For one we can ignore spin:
+\begin{equation}
+    \Delta E^{(1)}_{rel} = \bra{n, l, m}H^{(1)}_{rel}\ket{n, l, m}
+\end{equation}
+because the spin hilbert space is a different Hilbert space. This doesn't help with our differentiation problem though. What we can do to rectify this is to write:
+\begin{equation}
+    \begin{split}
+        \bra{n, l, m}H^{(1)}_{rel}\ket{n, l, m} = -\frac{1}{8m^3c^2}\bra{nlm}p^4\ket{nlm} &=-\frac{4m^2}{8m^3c^2}\bra{m^3c^2}\bra{nlm}[E_n - V(r)]^2\ket{nlm}
+        \\ &= - \frac{1}{2mc^2}\bra{nlm}E_n^2 - 2E_nV(r) + V^2(r)\ket{nlm}
+        \\ &= -\frac{1}{2mc^2}\left[E_n^2 + 2E_N\avg{\frac{e^2}{r}} + \avg{\frac{e^4}{r^2}}\right]
+    \end{split}
+\end{equation}
+we will discuss the mathematical tricks required to compute the averages in the above expression next class.
+
