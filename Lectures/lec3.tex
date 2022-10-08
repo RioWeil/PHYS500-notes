@@ -102,15 +102,8 @@ We can picture this as the spin precessing at a fixed angle $\theta$ (fixed $z$-
 
 \begin{figure}[htbp]
     \centering
-    \begin{tikzpicture}
-        \draw [rotate around={0.:(0.,0.)},dash pattern=on 2pt off 2pt, blue] (0,0) ellipse (2cm and 0.5cm);
-        \draw [lightgray, fill, fill opacity=0.1] (0, -1.6) -- (0, -1) arc [start angle=90, end angle=30, radius=0.5cm] -- cycle;
-        \draw[->, blue, thick] (-0.01, -0.5) -- (0.01, -0.5);
-        \draw[->, blue, thick] (0.01, 0.5) -- (-0.01, 0.5);
-        \draw[] (0, -2) -- (0, 1);
-        \draw[-latex, blue, thick] (-0.5, -2) -- (2, 0);
-        \node[] at (0.3, -0.85) {$\theta$};
-    \end{tikzpicture}
+    \includegraphics[]{Images/fig-spinprecess.pdf}
+
     \caption{When the initial spinor state $\chi(t = 0)$ is given by Eq. \eqref{eq-chithetat0} and evolves under a $z$-oriented magnetic field, the spin state can be visualized as precessing at fixed $\theta$ (the same $\theta$ as in the initial state). More technically, we could say that the spin state precesses at a fixed polar angle on the Bloch sphere; Note that the general spin state given in Eq. \eqref{eq-chigeneral} invites the visualization of a single spin-1/2 particle as a point on the unit sphere with polar coordinates $(\theta, \phi)$ (of course the global phase $\alpha$ is physically irrelevant).}
     \label{fig-spinprecess}
 \end{figure}

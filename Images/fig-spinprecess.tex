@@ -1,0 +1,14 @@
+\documentclass[10pt]{standalone}
+\usepackage{commands}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw [rotate around={0.:(0.,0.)},dash pattern=on 2pt off 2pt, blue] (0,0) ellipse (2cm and 0.5cm);
+    \draw [lightgray, fill, fill opacity=0.1] (0, -1.6) -- (0, -1) arc [start angle=90, end angle=30, radius=0.5cm] -- cycle;
+    \draw[->, blue, thick] (-0.01, -0.5) -- (0.01, -0.5);
+    \draw[->, blue, thick] (0.01, 0.5) -- (-0.01, 0.5);
+    \draw[] (0, -2) -- (0, 1);
+    \draw[-latex, blue, thick] (-0.5, -2) -- (2, 0);
+    \node[] at (0.3, -0.85) {$\theta$};
+\end{tikzpicture}
+\end{document}
