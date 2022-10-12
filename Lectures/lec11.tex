@@ -1,0 +1,127 @@
+\section{Hyperfine Structure of Hydrogen}
+Last time, we used perturbation theory to calculate the relativistic and spin-orbit corrections to the hydrogen atom. We then saw that the spectrum of the Hamiltonian split as seen in Fig. \ref{fig-finestructuresplit}. Note that there is no splitting for a given $l$ (as we found that the energy correction was independent of $l$).
+
+A note: if we have multiple perturbations to consider, we can categorize them by the order of magnitude of perturbations; then we can take different sets of perturbations as our base Hamiltonian in PT and then add the smaller ones as the perturbing Hamiltonians in PT (as we will do today when we consider the Zeeman effect (hyperfine structure) on top of the spin-orbit and relativistic corrections (fine structure)).
+
+We now consider the hyperfine structure of hydrogen. We will see that the $s$ states are sensitive, but the $p$ and $d$ states are not very sensitive to it. This is because for the $s$ states there will be an overlap of the wavefunction with the origin, but there will be no such overlap for the higher angular momentum states.
+
+\subsection{A brief classical EM derivation}
+We will derive the form of the hyperfine Hamiltonian in classical electromagnetism to start, then we will move to quantum mechanics. The magnetic moments are given by:
+\begin{equation}
+    \mu_e = \frac{\abs{e}\hbar}{mc}\v{S}_e, \quad \mu_p = \frac{\abs{e}\hbar}{m_pc}g_p \v{S}_p, g_p = 2.79
+\end{equation}
+The hyperfine interaction has Hamiltonian:
+\begin{equation}
+    H_{hyper} = -\gv{\mu}_e\cdot \v{B}
+\end{equation}
+where:
+\begin{equation}
+    \v{B} = \nabla \times \v{A}
+\end{equation}
+\begin{equation}
+    \v{A} = \frac{\gv{\mu}_p \times \v{r}}{r^3}\frac{1}{4\pi}
+\end{equation}
+Normally, we would ignore singularities; but here they are important. We will use tensorial notation so as to not miss anything. The $i$th component of the $B$-field is given by:
+\begin{equation}
+    B^i = \e^{ijk}\nabla_j A_k = \frac{1}{4\pi}\e^{ijk}\nabla_j\left(\e^{klm}\mu_p^l \frac{r_m}{r^3}\right)
+\end{equation}
+We recall the familiar formula (from the E-field of a point charge $E_m = -\nabla_m(\phi)$):
+\begin{equation}
+    \frac{r_m}{r^3} = -\nabla_m\left(\frac{1}{r}\right)
+\end{equation}
+Note that we have a singularity at the origin, which is the source of the hyperfine structure; we will return to this shortly. Using this result we have:
+\begin{equation}
+    B^i = -\frac{1}{4\pi}\e^{ijk}\e^{klm}\mu^l \nabla_j \nabla_m \frac{1}{r} = -\frac{1}{4\pi}\left(\delta^{il}\delta^{jm}-\delta^{im}\delta^{jl}\right)\mu^l \nabla_j \nabla_m \frac{1}{r}
+\end{equation}
+A derivation of the Levi-Civita identity can be found here; but it amounts to little more than just keeping track of indices \url{https://d197for5662m48.cloudfront.net/documents/publicationstatus/40398/preprint_pdf/4a9c3af307146df9d5f21f8ceeb61988.pdf}. If we simplify the above expression, we have:
+\begin{equation}
+    B^i = -\frac{1}{4\pi}\mu^l\left(\delta^{il}\delta^{jl} - \delta^{im}\delta^{jl}\right)\nabla_j \nabla_m \frac{1}{r} = \frac{1}{4\pi}\left(-\mu^i\left(\nabla^2 \frac{1}{r}\right) + (\mu^j \nabla^j)\nabla^i\right)\frac{1}{r}
+\end{equation}
+Now from Gauss' law, we should be familiar with:
+\begin{equation}
+    \nabla^2 \frac{1}{r} = -4\pi \delta^3(\v{r})
+\end{equation}
+and for the other term (excepting $r = 0$) we have:
+\begin{equation}
+    \nabla_i\nabla_j\frac{1}{r} = \nabla_i\left(-\frac{r_j}{r^3}\right) = -\frac{\delta_{ij}}{r^3} + \frac{3r_ir_j}{r^5}
+\end{equation}
+If we multiply both sides by $\delta_{ij}$, we find:
+\begin{equation}
+    \nabla^2 \frac{1}{r} = \frac{-3 + 3}{r^3} = 0
+\end{equation}
+so we are missing something! Evidently, we are missing the $r = 0$ part. We know this already. The proper expression is therefore the following; we add the extra delta function:
+\begin{equation}
+    \nabla_i\nabla_j\frac{1}{r} = -\frac{\delta_{ij}}{r^3} + \frac{3r_ir_j}{r^5} - \delta_{ij}\frac{4\pi\delta^3(\v{r})}{3}
+\end{equation}
+where the $\frac{1}{3}$ comes in to cancel the sum over indices $\delta_{ii} = 3$. So our final expression is:
+\begin{equation}
+    B^i = -\frac{1}{4\pi r^3}\mu_i\left(\delta_{ijk} - 3n_in_j\right) + \frac{2}{3}\mu_i\delta^3(\v{r})
+\end{equation}
+where $n_i = r_i/r$. We had to keep track of these numbers/prefactors carefully as we will need to use these results to compare with experimentally measured values.
+
+\subsection{Solving the QM Problem}
+We now have the quantum-mechanical Hamiltonian:
+\begin{equation}
+    H_{hyper} = -\gv{\mu} \cdot \v{B} = \frac{\mu_e^i\mu_p^j}{4\pi r^3}\left(\delta_{ij} - 3n_in_j\right) - \frac{2}{3}\gv{\mu}_e \cdot \gv{\mu}_p \delta^3(\v{r})
+\end{equation}
+
+We will proceed to do PT to solve this problem. In doing so, we will have to integrate over wavefunctions. 
+
+\subsubsection{Some 3D Integral Identities}
+Before we head into it, we consider some identities:
+\begin{equation}
+    \int d\Omega n_i = 0
+\end{equation}
+this follows by thinking about the fact that $n_i \to -n_i$ is a symmetry (or you can explicitly think about the fact that the positive/negative area under $n_z = \cos\theta$ cancels when one integrates from $\theta = 0$ to $\theta = \pi$ - then this result should hold for all three). Now, we also have the identity:
+\begin{equation}
+    \int d\Omega n_z^2 = \frac{4\pi}{3}
+\end{equation}
+How to see this; of course:
+\begin{equation}
+    \int d\Omega \v{n}^2 = \int d\Omega = 4\pi
+\end{equation}
+as we just do the angular integrals. But then by symmetry, we should find that each of the components gives an equal contribution, so:
+\begin{equation}
+    \int d\Omega n_i^2 = \frac{4\pi}{3}.
+\end{equation}
+Or in further generality:
+\begin{equation}
+    \int d\Omega n_in_j = \delta_{ij}\frac{4\pi}{3}
+\end{equation}
+Looking at integrals over the terms in the Hamiltonian, we see that:
+\begin{equation}
+    \int d\Omega \left(\delta_{ij} - 3n_in_j\right) = 0.
+\end{equation}
+so the entirety of the contibribution to the integral arises from the delta function term; hence we had to be very precise with it.
+
+\subsubsection{Hyperfine corrections}
+We calculate (with knowledge that only the delta function term will contribute)
+\begin{equation}
+    \bra{ns}H_{hyper}\ket{ns} = -\frac{2}{3}\avg{\gv{\mu}_e\cdot\gv{\mu}_p}\int\abs{\Psi_{n0}}^2 d^3r \delta^3(\v{r}) = -\frac{2}{3}\left(\frac{1}{n^3\pi a_B^3}\right)\mu_e\mu_p\avg{\v{S}_e \cdot \v{S}_p}
+\end{equation}
+where we have used the Hydrogen atom result that:
+\begin{equation}
+    \abs{\psi_{n0}(r=0)}^2 = \frac{1}{n^3\pi a_B^3}
+\end{equation}
+and the dirac delta picks out the value of the wavefunction at the origin. We note something very important; we recall that:
+\begin{equation}
+    R_{nl} \sim r^l
+\end{equation}
+so for $l > 0$, \emph{there is no hyperfine correction!!} Only for the $s$ state there is corrections; for $p, d$ (and higher) there is no correction. Finishing up the calculation by substituting in the $\mu_e, \mu_p, a_B$, and $\avg{\v{S}_e \cdot \v{S}_p}$ we find:
+\begin{equation}
+    \bra{ns}H_{hyper}\ket{ns} = -\frac{2}{3}\frac{1}{n^3\pi}\left(\frac{me^2}{\hbar^2}\right)^3\left(\frac{\abs{e}\hbar}{mc}\right)\left(\frac{e\hbar g_p}{m_p c}\right) \cdot \begin{cases}
+        1/4 & \text{triplet}
+        \\ -3/4 & \text{singlet}
+    \end{cases}
+\end{equation}
+Or expressing things in terms of the fine structure constant and the Rydberg:
+\begin{equation}
+    \bra{ns}H_{hyper}\ket{ns} = \left(\frac{me^4}{\hbar}\right)\left(\frac{e^2}{\hbar c}\right)^2 \left(\frac{m}{m_p}\right)\left(\frac{2}{3}\frac{g_p}{\pi n^3}\right) = \si{Ry}\alpha^2 \left(\frac{m}{m_p}\right)\left(\frac{2}{3}\frac{g_p}{\pi n^3}\right)
+\end{equation}
+Noting the order of magnitude, this is \emph{exactly} what we estimated; we estimated $\si{Ry}\alpha^2 (m/m_p)$ and that is exactly what we see.
+
+Note that this $\Delta E \sim 10\si{eV}10^{-4}10^{-3} \sim 10^{-6}\si{eV}$ (I think there is an error here - numbers don't line up) between the triplet and singlet states corresponds to $\nu = 1420\si{MHz} \sim 14\si{GHz}$ or $\lambda = 21\si{cm}$. With the conversion $1\si{eV}\sim 10^4\si{K}$ we can express these energy scales in terms of temperatures.
+
+Our universe is very cold; $2.7\si{K}$. But, $10^{-6}\si{eV} \sim 10^{-2}\si{eV}$ is much smaller. 
+
+Logistics: MT Oct 24th. Every topic from HW1/2 covered. PT and angular momentum. Exam is open-book, but not open-devices. 50 minutes. Next in class, we will discuss time-dependent PT, WKB, adiabatic approximation etc. but this is not covered on the MT.
