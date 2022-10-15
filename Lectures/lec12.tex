@@ -3,9 +3,10 @@ Up to this point, we have discussed the fine and hyperfine structure, and discus
 
 \begin{figure}[htbp]
     \centering
-    \textcolor{blue}{TODO: Energy spectrum - with hyperfine splitting}
-    \caption{<caption>}
-    \label{<label>}
+    \includegraphics[]{Images/fig-hyperfinestructuresplit.pdf}
+
+    \caption{Splitting in hydrogen atom energy levels due to the fine structure and hyperfine structure. Figure is not to scale (the hyperfine splittings are $\sim 10^{-3}$ smaller compared to the fine structure). Note the hyperfine splitting only occurs for the $s$ states (as it only occurs for states whose radial wavefunction is nonvanishing at the origin) and the split is between the singlet and triplet states. The $3/1$ denotes triplet/singlet and the $1/0$ denotes the total joint spin as $1$ or $0$.}
+    \label{fig-hyperfinestructuresplit}
 \end{figure}
 
 However note that thus far we have only discussed internal fields. We today discuss external ones.
@@ -93,10 +94,12 @@ with energies:
 Graphically, we have the spectrum:
 \begin{figure}[htbp]
     \centering
-    \textcolor{blue}{Splitting from external E field}
-    \caption{<caption>}
-    \label{<label>}
+    \includegraphics[]{Images/fig-strongstarkeffectsplit.pdf}
+    
+    \caption{(Linear) Stark Effect splitting of the 8-fold degenerate $2s2p$ energy level in the Hydrogen atom in the presence of a strong external electric field. The energy level splits into three levels, separated by $3eaE$. The degeneracies of the new levels are denoted in red.}
+    \label{fig-strongstarkeffectsplit}
 \end{figure}
+
 We still have the degeneracy from the spin (although it does not factor into the problem here), and one of the levels remains without a change in the energy. Note that if we included fine structure on top of this, we would have a further splitting in the above diagram (but of a much smaller order of magnitude than the E-field splitting). Note also that if the electric field perturbation was on the same order of magnitude as the fine structure perturbation, then we would consider the perturbing Hamiltonian to be the sum of the E-field and fine structure terms, and we would have to diagonalize a much less simple $T_{ab}$ matrix.
 
 \subsection{Stark Effect - Small Field}
@@ -108,8 +111,15 @@ The only level which exhibits splitting is the $2s_{1/2}2p_{1/2}$ level as there
 \begin{equation}
     \ket{\psi_\pm} = \frac{1}{\sqrt{2}}\left(\ket{l=1, m=0, s_z = \frac{1}{2}} \pm \ket{l=1, m=1, s_z = -\frac{1}{2}}\right)
 \end{equation}
-(Ok, this was not so clear to me here how the above formula follows, but oh well).
+(Ok, this was not so clear to me here how the above formula follows, but oh well). The energy splitting can be seen in Fig.
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[]{Images/fig-weakstarkeffectsplit.pdf}
+    
+    \caption{Stark effect splitting of the $2s_{1/2}2p_{1/2}$ (fine structure) energy level due to a weak external electric field. The fourfold degenerate level splits into three levels.}
+    \label{fig-weakstarkeffectsplit}
+\end{figure}
 
 \subsection{Selection Rules - Calculating expectation values of z}
 Let us consider a general matrix element:
@@ -153,6 +163,16 @@ as is clear from looking at the Hamiltonian. We can do the whole matrix elements
 \begin{equation}
     \Delta E = \bra{\cdot}2S_z + L_z\ket{*} \frac{-\abs{e}\hbar}{2mc}
 \end{equation}
-and this is trivial as of course the states are eigenstates of $L^2, S^2, L_z, S_z$! This becomes less trivial when the magnetic field is weaker (as we need to take into account the fine structure... and so our states we use are no longer eigenstates of $L^2, S^2, L_z, S_z$); but we can still do the calculation of the matrix elements above. It will be convenient to write it as $\bra{\cdot}J_z + S_z\ket{\cdot}$ instead.
+and this is trivial as of course the states are eigenstates of $L^2, S^2, L_z, S_z$! The energy splitting from the (strong-field) Zeeman effect therefore looks as in Fig. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[]{Images/fig-strongzeemaneffectsplit.pdf}
+
+    \caption{Energy splitting of the hydrogen atom levels from the strong-field Zeeman effect.}
+    \label{fig-strongzeemaneffectsplit}
+\end{figure}
+
+This correction becomes less trivial when the magnetic field is weaker (as we need to take into account the fine structure... and so our states we use are no longer eigenstates of $L^2, S^2, L_z, S_z$); but we can still do the calculation of the matrix elements above. It will be convenient to write it as $\bra{\cdot}J_z + S_z\ket{\cdot}$ instead.
 
 The last question of the HW asks for considerin the interplay of fine hyperfine, and zeeman effects in the Hydrogen atom; have fun! We start WKB next week.
