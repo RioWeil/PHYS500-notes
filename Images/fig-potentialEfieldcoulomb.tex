@@ -1,0 +1,15 @@
+\documentclass[]{standalone}
+\usepackage{commands}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \draw[thick, latex-latex] (0, -3) -- (0, 3);
+    \draw[thick, latex-latex] (-3, 0) -- (3, 0);
+    \draw[red] (-2, 3) -- (2, -3);
+    \draw[smooth, samples=100, blue, domain=0.34:3] plot(\x, {-1/\x});
+    \node[right] at (0, 3) {$V$};
+    \node[above] at (3, 0) {$r$};
+\end{tikzpicture}
+
+\end{document}
