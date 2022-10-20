@@ -24,16 +24,7 @@ If $E \gg U$ then:
 \begin{equation}
     \left|\frac{\hbar}{\sqrt{2}m}\frac{1}{E^{3/2}}\frac{1}{2}\dod{U}{x}\right| \ll 1
 \end{equation}
-So for excited enough states, this approximation is always justified (e.g. the Harmonic oscillator has $E \sim n$, so for $n$ sufficiently large the LHS is small).
-
-\begin{figure}[htpb]
-    \centering
-
-    \caption{}
-    \label{}
-\end{figure}
-
-However, we also see places where the approximation is never justified; in particular, for $E \sim U$ (the turning points) the LHS explodes and so the condition is not satisfied.
+So for excited enough states, this approximation is always justified (e.g. the Harmonic oscillator has $E \sim n$, so for $n$ sufficiently large the LHS is small). However, we also see places where the approximation is never justified; in particular, for $E \sim U$ (the turning points) the LHS explodes and so the condition is not satisfied.
 
 Note we have been assuming $\od{U}{x} \sim 1$ throughout.
 
@@ -55,8 +46,8 @@ We consider some smooth potential profile $U(x)$ in an infinite square well.
         \draw [thick] (0, 2) to [ curve through ={(0.25, 1.95) ..(0.5,1.75) .. (0.75, 1.65)   . . (1, 1.6) . . (1.5,1.375) . . (1.75, 1.5) ..  (2, 1.45) .. (2.5,1.65) .. (2.75, 1.75).. }] (3,2);
         \node[] at (1.5, 1.8) {$U(x)$};
     \end{tikzpicture}
-    \caption{<caption>}
-    \label{<label>}
+    \caption{A smooth potential profile $U$ enclosed in a infinite square well. We will find applying WKB gives rise to the Bohr-Sommerfield quantization condition.}
+    \label{fig-infinitesquarewellWKB}
 \end{figure}
 
 We have that:
@@ -89,14 +80,31 @@ and solving for the energies:
 \end{equation}
 which is exactly the result we got from doing it analytically in our first QM class.
 
-We can agai
+We can study the conditions for the validity of the WKB solutions in this case. As before, we have:
 
-\textcolor{blue}{TODO: Validity of WKB SOLUTIONS - study the same way as 14.2}
+\begin{equation}
+    \left|\frac{\hbar}{\sqrt{2}m}\frac{1}{(E - U)^{3/2}}\frac{1}{2}\dod{U}{x}\right| \ll 1
+\end{equation}
+
+So in the limit where $E \gg U$:
+
+\begin{equation}
+    \left|\frac{\hbar}{\sqrt{2}m}\frac{1}{E^{3/2}}\frac{1}{2}\dod{U}{x}\right| = \left|\sqrt{\frac{m}{\hbar}}\frac{1}{\pi^3n^3}\dod{U}{x}\right| \ll 11
+\end{equation}
+
+So for sufficiently large $n$ this holds (actually, in the case of $U = 0$ throughout the well the derivative vanishes everywhere so it holds even more generally, trivially).
+
 
 \subsection{Connection Formulae - Motivation and Setup}
-We now study the turning points. Consider the following:
+We now study the turning points; the setting is sketched in Fig. \ref{fig-connectionformula}.
 
-\textcolor{blue}{TODO: diagram}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.8]{Images/connectionformula.pdf}
+
+    \caption{Determining the WKB solution at the turning points. On the left, we have the classically allowed ($E > U$) region for the particle, where the solutions $\psi_1$ are imaginary exponentials. On the right, we have the classically forbidden ($E < U$) region for the particle, where the solutions $\psi_2$ are decaying exponentials. We now need to determine what happens when $E \approx U$. The standard method is to consider the linear potential solutions of Airy functions at the turning point to piece the two together (pink). We consider a quicker argument, where we analytically continue the function in the complex plane by carrying out integrals from $0 \to \pi$ and $0 \to -\pi$ (green).}
+    \label{fig-connectionformula}
+\end{figure}
 
 
 In the classically forbidden region (with $E < U(x)$) we can do exactly the same computations as we did for the classically allowed region; the only difference is now:
@@ -109,7 +117,7 @@ And so we obtain different WKB solutions:
 \end{equation}
 where the left formula is for the classically allowed region, with $p^2/2m = E - U$ and the right formula is for the classically forbidden region with $p^2/2m = U - E$ (the exact same analysis from last class applies to study this region). In the classically forbidden region, we have:
 \begin{equation}
-    \Psi_2(x) = \frac{D}{\sqrt{p}}e^{-\int_0^x \frac{p(x')dx'}{\hbar}}
+    \psi_2(x) = \frac{D}{\sqrt{p}}e^{-\int_0^x \frac{p(x')dx'}{\hbar}}
 \end{equation}
 where $p^2 = 2m(U-E)$. Note that we \emph{only} consider the negative exponential solution; our wavefunctions must be normalizable and hence we throw away the $\sim \exp(+x)$ solution that is non-normalizable as $x \to \infty$.
 
