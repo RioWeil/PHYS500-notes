@@ -1,0 +1,106 @@
+\section{WKB Part III}
+
+\subsection{Review of the Connection Formula Derivation}
+Let us explain what we have derived. Let assume a setup as in Fig. \ref{fig-connectionformula}. The wavefunction in the neighbourhood around the turning point $U = E$ (let us call this point $x_2$) cannot be described by WKB. But if $\psi_2$ (in the calssically forbidden region) is described by the form:
+\begin{equation}
+    \psi_2(x) = \frac{D}{\sqrt{p}}e^{-\frac{1}{\hbar}\int_{x_2}^x p(x')dx'}
+\end{equation}
+then $\psi_1(x)$ in the classically allowed region has the structure:
+\begin{equation}
+    \psi_1(x) = \frac{2D}{\sqrt{p}}\sin\left(\frac{1}{\hbar}\int_{x}^{x_2} p(x')dx' + \frac{\pi}{4}\right)
+\end{equation}
+
+Let us make a simple point; the fact that a sine appears in the above is absolutely trivial; we have imaginary exponential solutions to the SE in the classically allowed region. The nontrivial part is the $+\frac{\pi}{4}$ phase appears.
+
+\subsection{Deriving the Bohr-Sommerfield Quantization Formula}
+We can repeat exactly the same arguments for a setup like Fig. \ref{fig-connectionformula} but with the classically forbidden region to the left and the classically allowed region to the right of a turning point $x_1$. We then have that $\psi(x)$ to the left of the turning point is:
+\begin{equation}
+    \psi_{x < x_1}(x) = \frac{D'}{\sqrt{p}}e^{-\frac{1}{\hbar}\int_x^{x_1} p(x')dx'}
+\end{equation}
+note the order of the integral which ensures the decay of the wavefunction at infinity. We get an extremely similar formula for the wavefunction in the classically allowed region:
+\begin{equation}
+    \psi_{x > x_1}(x) = \frac{2D'}{\sqrt{p}}\sin\left(\frac{1}{\hbar}\int_{x_1}^{x} p(x')dx' + \frac{\pi}{4}\right)
+\end{equation}
+
+We now present a non-trivial claim: We claim that we can use the connection formulas going from both sides (assume we have $U$ which such that $x_1 < x < x_2$ is a classically allowed region inside $x_1 > x$ and $x > x_2$ are classically forbidden). When we do this, the wavefunctions inside of the classically allowed region \emph{must agree}. We therefore obtain the condition:
+\begin{equation}
+    \sin\left(\frac{1}{\hbar}\int_{x_1}^{x} p(x')dx' + \frac{\pi}{4}\right) = \pm \sin\left(\frac{1}{\hbar}\int_{x}^{x_2} p(x')dx' + \frac{\pi}{4}\right)
+\end{equation}
+where the $\pm$ comes from $D' = \pm D$. We now consider writing the integral on the LHS as:
+\begin{equation}
+    \int_{x_1}^x + \frac{\pi}{4} = \int_{x_2}^x  + \int_{x_1}^{x_2} + \frac{\pi}{4} = -\int_{x}^{x_2} + \int_{x_1}^{x_2} + \frac{\pi}{4} - \frac{\pi}{4} + \frac{\pi}{4}
+\end{equation}
+We then see that $-\int_{x}^{x_2} - \frac{\pi}{4}$ precisely appears on the RHS, and so we obtain the \emph{Bohr-Sommerfield quantization condition}:
+\begin{equation}
+    \theta = \int_{x_1}^{x_2} + \frac{\pi}{2} = n\pi
+\end{equation}
+or rewriting this:
+\begin{equation}
+    \boxed{\int_{x_1}^{x_2}\frac{p(x')dx'}{\hbar} = \pi(n + \frac{1}{2})}
+\end{equation}
+
+\subsection{Analyzing the Bohr-Sommerfield Quantization Formula}
+\begin{enumerate}[(a)]
+    \item What is $n$? This is the number of nodes inside the potential, or also the excitation number.
+    \item We can reformulate the condition as:
+    \begin{equation}
+        n = \int_{x_1}^{x_2}\frac{pdx}{\hbar \pi} = \oiint_{\frac{P^2}{2m} \leq E - U} \frac{dpdx}{2\pi\hbar} = \oint \frac{pdx}{2\pi\hbar}
+    \end{equation}
+    So what does this say? We take the phase volume of the system, and divide this by $2\pi\hbar$; We therefore obtain the nuber of quantum cells! 
+    \item We find that one quantum cell has volume $2\pi\hbar$ (this could also follow by considering the uncertainty relation).
+    \item In $3D$, we can generalize everything we have just said, and write:
+    \begin{equation}
+        dn = \frac{d^3pd^3x}{(2\pi\hbar)^3} = \frac{V}{(2\pi\hbar)^3}p^2dpd\Omega
+    \end{equation}
+    Often we can represent $p$ in terms of energy, and find the number of states per unit energy (density of states in terms of energy). Explicitly, we can see that $p^2 dp = pEdp$ which follows from:
+    \begin{equation}
+        E^2 = p^2  +m^2 \implies EdE = pdp
+    \end{equation}
+    This is correct for both nonrelativistic and relativistic physics (we will use this formula to study photons). For free particles with $E = p^2/2m$, we find:
+    \begin{equation}
+        \frac{1}{V}\frac{dn}{dE} = \frac{d\Omega}{(2\pi\hbar)^3}\abs{p}E
+    \end{equation}
+    which is the number of states per unit energy per unit volume. Density of states is extremely useful, and comes up in many places in physics, such as:
+    \begin{itemize}
+        \item Fermi liquid model in condensed matter physics
+        \item Transitions in atomic physics
+        \item Thomas-Fermi models for complex models.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Solving the QHO with WKB}
+Let us use WKB to solve the simplest problem there is; the Harmonic Oscillator. We want to quantize it assuming we don't know the exact solution. Writing down the Bohr-Sommerfield quantization condition, we find:
+\begin{equation}
+    \int_{-a}^a pdx = \pi\hbar(n + \frac{1}{2})
+\end{equation}
+We have $p = \sqrt{2m(E - U(x))}$ and $U(x) = \frac{1}{2}kx^2$. At $x = \pm a$ we have $E = \frac{ka^2}{2}$ and so:
+\begin{equation}
+    \int_{-a}^{a} pdx = a\sqrt{2mE}\int_{-a}^{a}\sqrt{1 - \left(\frac{x}{a}\right)^2}\frac{dx}{a}
+\end{equation}
+Now making the substitution $z = \frac{x}{a}$ with $z \in (-1, 1)$, we can evaluate the integral (e.g. via trigonometric substitution) to find:
+\begin{equation}
+    \int_{-a}^{a} pdx  = \sqrt{\frac{2E}{k}}\sqrt{2mE}\frac{\pi}{2} = \pi\hbar(n + \frac{1}{2})
+\end{equation}
+With $\omega^2 = k/m$, we find:
+\begin{equation}
+    E = \hbar\omega(n + \frac{1}{2})
+\end{equation}
+and we reproduce exactly the analytical result for the eigenenergies of the oscillator! Nevertheless, we cannot trust this result for sufficiently small $n$. How do we find out when this formula can be trusted? We go back to the discussion of when WKB is justified:
+\begin{equation}
+    \left|\dod{}{x}\frac{\hbar}{p}\right| \ll 1
+\end{equation}
+Differentiating, we find:
+\begin{equation}
+    \left|\frac{\hbar}{\sqrt{2m}}\frac{1}{(E - U)^{3/2}}\frac{1}{2}kx\right| \ll 1
+\end{equation}
+which with $U = \frac{1}{2}kx^2$, and $z = x/a$ becomes;
+\begin{equation}
+    \left| \frac{\hbar\omega}{E}\frac{z}{(1-z^2)^{3/2}}\right| \ll 1
+\end{equation}
+substituting in $E_n = \hbar\omega(n + \frac{1}{2})$ (and ignoring some coefficients) we have:
+\begin{equation}
+    \left|\frac{1}{(1-z^2)^{3/2}}\frac{1}{n}\right| \ll 1
+\end{equation}
+so for sufficiently large $n$, so long as we stay away from the turning points $z = \pm 1$ (i.e. $x = \pm a$) WKB is reliable here. How close we can get to the turning point will be a matter of how large $n$ is.
+
+After the midterm on wednesday, we will use WKB to analyze tunnelling.
