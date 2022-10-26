@@ -1,0 +1,109 @@
+\section{Midterm Review}
+
+\subsection{Two Spin-1 Particles}
+We consider a system made of two spin-1 particles with the Hamiltonian:
+\begin{equation}
+    H = \e_1 \v{S}^{(1)} \cdot \v{S} + \e_2(S_z)^2
+\end{equation}
+where $\v{S} = \v{S}^{(1)} + \v{S}^{(2)}$, $\e_1 > 0, \e_2 > 0$. 
+
+\begin{enumerate}[(a)]
+    \item Demonstrate (by computing the relevant commutators) that the classification $\ket{S^{(1)}, S^{(2)}, S, S_z}$ is a good classification scheme of states for this Hamiltonian.
+    \item What is the lowest energy of the system?
+    \item What is the ground state? Formulate your answer using the classification $\ket{S^{(1)}, S^{(2)}, S, S_z}$. Use CG coefficients to represent this state in terms of $\ket{S^{(1)}, S^{(2)}, S_z^{(1)}, S_z^{(2)}}$. 
+    \item Compute the expectation value $\avg{S_x^{(1)}S_x^{(2)} + S_y^{(1)}S_y^{(2)}}$ for the ground state.
+    \item \textbf{Strictly qualitative problem. No calculations!} What is the expectation value $\avg{S_z^{(1)}}$ for the ground state? Zero or nonzero? Present the arguments.
+\end{enumerate}
+
+\noindent
+\textit{Solution.} 
+\begin{enumerate}[(a)]
+    \item We start by rewriting the Hamiltonian:
+    \begin{equation}
+        H = \e_1 (\v{S}^{(1)})^2 + \e_1\v{S}^{(1)} \cdot \v{S}^{(2)} + \e_2 (S_z)^2
+    \end{equation}
+    We can easily find that $[H, S^2] = 0$ and $[H, S_z] = 0$, $[H, (S^{(1)})^2] = [H, (S^{(2)})^2] = 0$ by writing $\v{S}^{(1)} \cdot \v{S}^{(2)} = \frac{1}{2}(S^2 - (\v{S}^{(1)})^2 - (\v{S}^{(2)})^2)$. Note that $[H, S_i] = 0$. 
+    \item We rewrite:
+    \begin{equation}
+        H = \frac{\e_1}{2}\left(S_1^2 - S_2^2\right) + \frac{\e_1}{2}S^2 + \e_2 S_z^2
+    \end{equation}
+    $S_1^2 - S_2^2$ is invariant, so we pick a state such that $S^2, S_z^2$ are minimized. So we pick the state with $s = 0$ and $s_z = 0$. but then by symmetry $S_1^2 - S_2^2$ will be zero. So the ground state energy is zero.
+    \item In the eigenbasis we have $\ket{s = 0, s_z = 0}$. We can use a CG table to write:
+    \begin{equation}
+        \ket{s = 0, s_z = 0} = \frac{1}{\sqrt{3}}\ket{s_z^{(1)} = -1, s_z^{(2)} = 1} + \frac{1}{\sqrt{3}}\ket{s_z^{(1)} = 0, s_z^{(2)} = 0} + \frac{1}{\sqrt{3}}\ket{s_z^{(1)} = 1, s_z^{(2)} = -1}.
+    \end{equation}
+    \item The easiest way to do this is to write:
+    \begin{equation}
+        \avg{S_x^{(1)}S_x^{(2)} + S_y^{(1)}S_y^{(2)}} = \avg{\v{S}^{(1)} \cdot \v{S}^{(2)} - S_z^{(1)}S_z^{(2)}}
+    \end{equation}
+    We then have:
+    \begin{equation}
+        \v{S}^{(1)} \cdot \v{S}^{(2)} = \frac{1}{2}(S^2 - (S^{(1)})^2 - (S^{(2)})^2)
+    \end{equation}
+    so computing the values using the relevant eigenbases:
+    \begin{equation}
+        \avg{S_x^{(1)}S_x^{(2)} + S_y^{(1)}S_y^{(2)}} = \frac{1}{2}(0 - 2 - 2) + \frac{2}{3} = -\frac{4}{3}
+    \end{equation}
+    \item $\avg{S_z^{(1)}} = 0$. Because a singlet is rotationally invariant, there is no preferred direction for a single spin.
+\end{enumerate}
+
+
+\subsection{Perturbation Theory for Two-Level System}
+Cosnider a two-state system with a Hamiltonian represented in the spin $S_z$ basis as
+\begin{equation}
+    H^{(0)} = \m{a & 0 \\ 0 & b}.
+\end{equation}
+Now the system is perturbed with
+\begin{equation}
+    H' = \m{a_3 & a_1 \\ a_1 & -a_3}
+\end{equation}
+where $a_1 \approx a_3 \ll a, b$. 
+\begin{enumerate}[(a)]
+    \item Show that the unperturbed system described two levels with energies $E_1 = a$ and $E_2 = b$ correspondingly.
+    \item Using first order perturbation theory to compute corrections to these energy levels.
+    \item Compute the exact eigenenergies by diagonalizing the full Hamiltonian $H^{(0)} + H'$. 
+    \item Use Taylor expansion from (c) to reproduce the first order correction from item (b).
+    \item What is the accuracy of the perturbation theory? In other words what are the (leading) corrections which had been neglected in computations (b)?
+    \item Take $a = b$ in exact formula derived in (c). Do you reproduce first order perturbation result derived in (b)? Make comments.
+\end{enumerate}
+
+\noindent
+\textit{Solution.}
+
+\begin{enumerate}[(a)]
+    \item Just read this off. $H^{(0)}$ is a diagonal matrix with entries (and hence) eigenvalues $a, b$. 
+    \item Use first order perturbation theory to compute corrections to these energy levels. Assuming $a \neq b$, we can use non-degenerate PT to compute:
+    \begin{equation}
+        \Delta E_1 = \m{1 & 0}\m{a_3 & a_1 \\ a_1 & -a_3}\m{1\\ 0} = a_3
+    \end{equation}
+    \begin{equation}
+        \Delta E_2 = \m{0 & 1}\m{a_3 & a_1 \\ a_1 & -a_3}\m{0\\ 1} = -a_3
+    \end{equation}
+    \item Adding:
+    \begin{equation}
+        H = H^{(0)} + H' = \m{a + a_3 & a_1 \\ a_1 & b - a_3}
+    \end{equation}
+    then:
+    \begin{equation}
+        \begin{split}
+            \det(H - E_{1,2}\mathbb{I}) = 0 \implies E_{1, 2} &= \frac{a+b}{2} \pm \sqrt{\left(\frac{a+b}{2}\right)^2 - ((a + a_3)(b - a_3) - a_1^2)}
+            \\ &= \frac{a + b}{2} \pm \sqrt{\left(\frac{a+b}{2}\right)^2 - ab - a_3(b - a) + a_1^2 + a_3^2}
+            \\ &= \frac{a+b}{2} \pm \sqrt{\left(\frac{a-b}{2}\right)^2 + a_3(a - b) + a_1^2 + a_3^2}
+            \\ &= \frac{a+b}{2} \pm \frac{a-b}{2}\sqrt{1 + \frac{4a_3}{a-b} + \frac{4(a_1^2 + a_3^2)}{a-b}}
+        \end{split}
+    \end{equation}
+    \item Taylor expanding (to first order)
+    \begin{equation}
+        E_{1, 2} \approx \frac{a + b}{2} \pm \frac{a-b}{2}\left(1 + \frac{2a_3}{a-b}\right) = \frac{a + b}{2} \pm \frac{a - b}{2} \pm a_3 \implies E_1 \approx a + a_3, E_2 \approx b - a_3
+    \end{equation}
+    \item The corrections are of the order:
+    \begin{equation}
+        \mathcal{O}(\frac{a_1^2/a_3^2}{a-b})
+    \end{equation}
+    so long as $a_1 \ll a - b$.
+    \item When we take $a = b$, we have:
+    \begin{equation}
+        H = \m{a + a_3 & a_1 \\ a_1 & a - a_3} \implies \lambda_{1, 2} = a \pm \sqrt{a_1^2 + a_3^2}
+    \end{equation}
+    and we don't get the same corrections, because we need to use degenerate PT instead of non-degenerate PT here, of course.
+\end{enumerate}
