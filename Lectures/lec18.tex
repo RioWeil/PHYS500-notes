@@ -39,15 +39,7 @@ and so:
 \begin{equation}
     c_a(t) = -\frac{1}{\hbar^2}\int_0^t dt' e^{-i\omega t'}\bra{\psi_a}H'(t')\ket{\psi_b}\int_0^{t'}dt'' e^{i\omega t''}\bra{\psi_b}H'(t'')\ket{\psi_a}
 \end{equation}
-
-\subsection{Higher-Order Time-Dependent Perturbation Theory}
-
-\emph{Not actually discussed in lecture - added by me after the fact for completeness}. The third order perturbation theory (and higher orders) follow by continuing to iterate as we have done above (solve for the coefficients at a lower order, then plug them back into the differential equation and solve). Formally, the full solution to the system of differential equations is given by the Dyson series. 
- 
-
-\textcolor{blue}{TODO: Fill this in (not covered in class, but worhtwhile i think)}
-
-But often 
+The third order perturbation theory (and higher orders) follow by continuing to iterate as we have done above (solve for the coefficients at a lower order, then plug them back into the differential equation and solve). Formally, the full perturbative expansion can be written down as a Dyson series. But often the lower order terms are sufficient to probe interesting physical effects.
 
 \subsection{Example: Exponentially Decaying Electric Field Pulse}
 We consider a electric field with temporal profile:
@@ -61,10 +53,11 @@ so our perturbing Hamiltonian is:
 
 \begin{figure}[htbp]
     \centering
-    \textcolor{blue}{TODO: pulse}
-    \caption{<caption>}
-    \label{<label>}
+    \includegraphics[scale=0.6]{Images/fig-gaussianpulse.pdf}
+    \caption{Sketch of the gaussian pulse of the electric field.}
+    \label{fig-gaussianpulse}
 \end{figure}
+
 We suppose that our state starts in the $\ket{100}$ state. We want to determine the transition probability to $\ket{n \neq 0, l = 1, m = 0}$ We recall from our selection rules that:
 \begin{equation}
     \bra{nlm}z\ket{100} \neq 0
