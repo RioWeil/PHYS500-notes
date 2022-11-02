@@ -1,0 +1,90 @@
+\section{Time-Dependent Perturbation Theory II}
+We had eigenstates $\ket{\psi_a}, \ket{\psi_b}$ of a two-level system, with $c_a(t = 0) = 1, c_b(t = 0) = 0$. We then calculated (to first order in perturbation theory):
+\begin{equation}
+    c_b(t) = -\frac{i}{\hbar}\int_0^t dt' e^{i\omega_0 t'}\bra{\psi_b} H'\ket{\psi_a}
+\end{equation}
+where $\omega_0 = \frac{E_b - E_a}{\hbar}$. The transition probability was:
+\begin{equation}
+    P_b(t) = \abs{c_b(t)}^2
+\end{equation}
+and the perturbation theory was valid whenever $\abs{c_b(t)}^2 \ll 1$.
+
+\subsection{Periodic Perturbation and Fermi's Golden Rule}
+We consider a periodic perturbation of the form:
+\begin{equation}
+    H' = V(r)2\cos(\omega t)  = V(r)\left[e^{i\omega t} + e^{-i\omega t}\right]
+\end{equation}
+this is an absolutely crucial kind of perturbation; there are many periodic phenomena in physics, and even when not periodic, we can always Fourier transform and look at individual frequencies. A notational point that $\omega_0$ is the energy splitting of the two level system, and $\omega$ is an external parameter. We can immediately substitute this into the formula and find:
+\begin{equation}
+    c_b(t) = V_{ba}\left(-\frac{i}{\hbar}\right)\left[\int_0^t dt' e^{-i\omega t'}e^{i\omega_0 t} + e^{i\omega t'}e^{i\omega_0 t}\right]
+\end{equation}
+where $V_{ba} = \bra{\psi_b}V(r)\ket{\psi_a}$. The computation is simple:
+\begin{equation}
+    c_b(t) = -\frac{V_{ba}}{\hbar}\left[\frac{e^{i\omega_0 + \omega}t}{\omega_0 + \omega} + \frac{e^{i(\omega_0 - \omega)t}}{\omega_i - \omega}\right]
+\end{equation}
+The first term corresponds to spontaneous absorption and the second spontaneous emission. Let us assume that $\abs{\omega_0 - \omega} \ll \omega_0$ so we only consider the second term. We then find:
+\begin{equation}
+    c_b(t) = \frac{V_{ba}}{\hbar}\frac{e^{i\frac{\omega_0 - \omega}{2}}t}{\omega_0 - \omega}\left[2i\sin(\frac{\omega_0 - \omega}{2}t)\right]
+\end{equation}
+where we have used the identity $e^{i\alpha} - 1 = e^{i\frac{\alpha}{2}}\left(e^{i\frac{\alpha}{2}} - e^{-i\frac{\alpha}{2}}\right) = e^{i\frac{\alpha}{2}}2i\sin(\frac{\alpha}{2}) = -2e^{i\frac{\alpha}{2}}\sin(\frac{\alpha}{2})$. The probability is then:
+\begin{equation}
+    \abs{c_b(t)}^2 = \frac{4\abs{V_{ba}}^2}{\hbar^2(\omega_0 - \omega)^2}\sin^2\left(\frac{\omega_0 - \omega}{2}t\right)
+\end{equation}
+so the probability is seen to oscillate in time. We now make a mathematical claim:
+
+\begin{equation}
+    \lim_{t \to \infty}\frac{\sin^2(\alpha t)}{\pi t \alpha^2} = \delta(\alpha)
+\end{equation}
+with $\alpha = \frac{\omega_0 - \omega}{2}$ in our case. This limit is of interest as generally the timescale of experiments is much longer than the rapid fluctuations in the quantum systems. We now prove this. If $\alpha \neq 0$, then:
+\begin{equation}
+    \lim_{t \to \infty}\frac{\sin^2(\alpha t)}{\pi t \alpha^2} = 0
+\end{equation}
+as $\abs{\sin^2(\alpha t)} \leq 1$ and $\frac{1}{t} \to 0$. If $\alpha \to 0$, then:
+\begin{equation}
+    \lim_{t \to \infty} \lim_{\alpha \to 0}\frac{\sin^2(\alpha t)}{\pi t \alpha^2} = \lim_{t \to \infty} \lim_{\alpha \to 0}\frac{(\alpha t)^2}{\pi t \alpha^2} = \lim_{t \to \infty} \lim_{\alpha \to 0} \frac{t}{\pi} = \lim_{t \to \infty} \frac{t}{\pi} = \infty.
+\end{equation}
+We now consider:
+\begin{equation}
+    \int_{-\infty}^\infty \frac{\sin^2(\alpha t)}{\pi t^2\alpha^2} d(\alpha t) = \int_{-\infty}^\infty \frac{\sin^2 \eta}{\pi \eta^2}d\eta = \frac{1}{\pi} \cdot \pi = 1.
+\end{equation}
+so our function is indeed the delta function $\delta(\alpha)$.
+
+So:
+\begin{equation}
+    P_b(t) = \frac{\abs{V_{ba}}^2}{\hbar^2}\left(\frac{\sin^2\alpha t}{\pi t \alpha^2} \right) \pi t \stackrel{t\to\infty}{\longrightarrow} \frac{\abs{V_{ba}}^2}{\hbar^2}\pi t \delta(\frac{\omega_0 - \omega}{2})
+\end{equation}
+now using the identity $\delta(\alpha x) = \frac{\delta(x)}{\abs{a}}$ we have:
+\begin{equation}
+    P_b(t) = \frac{\abs{V_{ba}}^2}{\hbar}2\pi t\delta(E_b - E_a - \hbar \omega)
+\end{equation}
+The probability per unit time is:
+\begin{equation}
+    \dod{W}{t} = \frac{2\pi}{\hbar}\abs{V_{ba}}^2\delta(E_b - E_a - \hbar\omega)
+\end{equation}
+which is \emph{Fermi's golden rule}.
+
+The missing part is degeneracy. The rate of events is:
+\begin{equation}
+    R = \int \dod{W}{t}\frac{d^3pd^3x}{(2\pi\hbar)^3} = \int \frac{2\pi}{\hbar}\abs{V_{ba}}^2\delta(E_f - E_i + \hbar\omega) \cdot \frac{d^3pd^3x}{(2\pi\hbar)^3}
+\end{equation}
+(using that $\delta(-x) = \delta(x)$). We have a number of states term on the right, which we derived from WKB.
+
+$\int d^3x$ can be taken to be the volume $V$, and $d^3p$ can taken to be:
+\begin{equation}
+    d^3p = \hbar^3 d^3k = \hbar^3 k^2 dk d\Omega = \frac{\hbar^3 \omega^2d\omega}{c^3} d\Omega = \frac{\hbar^3\omega^3d(\omega h)}{c^3\hbar}d\Omega
+\end{equation}
+
+We now substitute this in, integrating out the delta function:
+\begin{equation}
+    \begin{split}
+        dR &= \frac{2\pi}{\hbar}\abs{V_{ab}}^2 \frac{V\hbar^2\omega^2}{(2\pi\hbar)^3c^3}d\Omega 
+        \\ &= \frac{\omega^2}{(2\pi)^2}\frac{d\Omega}{\hbar c^3}\abs{V_{ba}}^2 V
+    \end{split}
+\end{equation}
+where the above is the rate per unit angle. But often the $d$ is dropped and this is just written as $R$.
+
+We have yet to compute $\abs{V_{ab}}^2$, which is the most difficult part. Writing down the Hamiltonian:
+\begin{equation}
+    \hat{H} = \frac{\left(\hat{p} + \frac{e}{c}\hat{A}\right)^2}{2m}
+\end{equation}
+where we have set the charge $q = -e$. Next class we discuss the interactions between $\hat{A}$ and $\hat{p} = -i\hbar \nabla$, and derive different transitions. Interestingly, we will reproduce the dipole transitions we have seen in classical physics. 
