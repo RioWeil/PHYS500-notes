@@ -1,0 +1,125 @@
+\section{Spontaneous Emission II}
+We derived the formula for the probablity per unit time:
+\begin{equation}
+    \dod{W}{t} = \sum_\lambda \frac{1}{2\pi\hbar c^3}\left(\frac{e}{m}\right)^2\omega\abs{\bra{f}\gv{\e}^\lambda \cdot \v{p}\ket{i}}^2d\Omega
+\end{equation}
+
+\subsection{Finishing the Rate Calculation}
+We now do the computation of the matrix element. Note that the polarization does not influence the matrix element at all, so:
+\begin{equation}
+    \bra{f}\gv{\e}^\lambda \cdot \v{p}\ket{i} = \gv{\e}^\lambda \cdot \bra{f}\v{p}\ket{i}
+\end{equation}
+We consider the Hamiltonian:
+\begin{equation}
+    H^0 = \frac{\v{p}^2}{2m} - \frac{e^2}{r}
+\end{equation}
+Then the commutator of $H^0$ with position is:
+\begin{equation}
+    [H^0, x_j] = [\frac{p_ip_i}{2m}, x_j] = \frac{p_i}{2m}[p_i, x_j]2 = -\frac{2p_i}{2m}\left(-i\hbar\delta_{ij}\right) = \frac{i\hbar}{m}p_j
+\end{equation}
+Now let us represent:
+\begin{equation}
+    p_j = \frac{m}{\hbar i}[H^0, x_j]
+\end{equation}
+So substituting this into our rate:
+\begin{equation}
+    \dod{W}{t} = \sum_\lambda \frac{1}{2\pi\hbar c^3}\left(\frac{e}{m}\right)^2\omega\left(\frac{m}{\hbar}\right)^2\abs{\gv{\e}^\lambda \cdot \bra{f}[H^0, x_i]\ket{i}}^2d\Omega
+\end{equation}
+this commutator is very easy, as it just gives an energy difference:
+\begin{equation}
+    \begin{split}
+        \dod{W}{t} &= \sum_\lambda \frac{1}{2\pi\hbar c^3}\left(\frac{e}{m}\right)^2\omega\left(\frac{m}{\hbar}\right)^2\abs{\gv{\e}^\lambda \cdot (E_f - E_i)\bra{f}\v{x}\ket{i}}^2d\Omega
+        \\ &= \sum_\lambda \frac{1}{2\pi\hbar^2c^3}e^2\omega^3\abs{\gv{\e}^\lambda\cdot\bra{f}\v{x}\ket{i}}^2d\Omega
+        \\ &= \sum_\lambda \frac{e^2\omega}{2\pi\hbar c}\abs{\gv{\e}^\lambda \bra{f}\v{x}\ket{i}k}^2
+    \end{split}
+\end{equation}
+We estimate $kx \sim \frac{\omega}{c}a_B \sim \alpha \ll 1$. So:
+\begin{equation}
+    \begin{split}
+        \dod{W}{t} = \sum_\lambda \frac{\alpha}{2\pi}\omega \abs{\gv{\e}^\lambda \cdot \abs{\v{k}}\bra{f}\v{x}\ket{i}}^2 = \sum_\lambda \frac{1}{2\pi}\frac{\omega}{\hbar c}\abs{\gv{\e}^\lambda \cdot \abs{\v{k}}\bra{f}\v{x}e\ket{i}}^2
+    \end{split}
+\end{equation}
+Where $\v{x}e$ is the dipole moment operator - so these are electric dipole transitions!
+
+\subsection{Estimating and Justifying Electric Dipole Transistions}
+Since $ka_B \sim \frac{\omega}{c}a_B \sim \alpha$, then:
+\begin{equation}
+    \dod{W}{t} \sim \frac{\alpha}{2\pi}\omega \alpha^2 \sim \frac{\alpha^3}{2\pi}\omega
+\end{equation}
+Note that to check if the PT is justified, we check that our parameters are small when compared to the characteristic fluctuation time of the system:
+\begin{equation}
+    \dod{W}{t}\frac{1}{\omega} \sim \alpha^3 \ll 1
+\end{equation}
+this is indeed the case so it is justified. We are discussing UV light typically here, so a typical rate (with $\frac{\alpha^3}{2\pi} \sim 10^{-7}$, $\omega \sim \frac{10\si{eV}}{\hbar}$ with $\hbar = 6.6\times 10^{-16}\si{eVs}$:
+\begin{equation}
+    \dod{W}{t} \sim \frac{\alpha^3}{2\pi}\omega \sim 10^{-7}\frac{10\si{eV}}{ 6.6\times 10^{-16}\si{eVs}} \sim 10^9 \si{s^{-1}}.
+\end{equation}
+So, we have a billion transitions per second.
+
+\subsection{Computing the Electric Dipole Transition}
+We use some common tricks used by HEP folkks to carry out the formal calculation. The polarization is very irritating, as there are two polarizations per direction of propogation, and then we integrate over all angles... very messy. 
+\begin{equation}
+    \sum_\lambda \e_i^\lambda \e_j^\lambda(\v{n}) = A\delta_{ij} + Bn_in_j
+\end{equation}
+since we sum over polarizations, the information about it disappears. We only end up with a $\delta_{ij}$ and the product of photon momentum. There is nothing else in my life :(
+
+Now we consider some conditions to evaluate what A, B are. Let us multiply both sides by $\delta_{ij}$. Since $\abs{\e}^2 = 1$ (as the polarizations are unit vectors) we end up with:
+\begin{equation}
+    2 = 3A + B
+\end{equation}
+If we multiply both sides by $n_in_j$, using that $\gv{\e} \cdot \v{k} = 0$, the LHS vanishes and so:
+\begin{equation}
+    0 = A + B
+\end{equation}
+Therefore:
+\begin{equation}
+    A = 1, B = -1
+\end{equation}
+and so:
+\begin{equation}
+    \sum_\lambda \e_i^\lambda \e_j^\lambda(\v{n}) = \delta_{ij} - n_in_j
+\end{equation}
+The probability per unit time after summing over all polarizations is then:
+\begin{equation}
+    \dod{W}{t} = \frac{\alpha}{2\pi}\omega\abs{\v{k}}^2\left[\bra{f}x_i\ket{i}\bra{i}x_j\ket{f}\right](\delta_{ij} - n_in_j)d\Omega
+\end{equation}
+This integral over all angles is something we have already done:
+\begin{equation}
+    \int(\delta_{ij} - n_in_j)d\Omega = \delta_{ij}4\pi - \frac{1}{3}\delta_{ij}4\pi = \delta_{ij}\left(4\pi - \frac{4\pi}{3}\right)
+\end{equation}
+Thus (after integrating):
+\begin{equation}
+    \dod{W}{t} = \frac{\alpha}{2\pi}\omega\abs{\v{k}}^2\left[\bra{f}x_j\ket{i}\bra{i}x_j\ket{f}\right]\frac{8\pi}{3}
+\end{equation}
+And just playing with the constants:
+\begin{equation}
+    \dod{W}{t} = \frac{4}{3}\frac{\omega}{\hbar c}\left(\frac{\omega}{c}\right)^2\abs{\bra{f}\v{d}\ket{i}}^2
+\end{equation}
+with $\v{d} = e\v{x}$ the dipole operator. Phrasing this in terms of intensity (from classical physics) we have:
+\begin{equation}
+    \dod{I}{t} = E\dod{W}{t} = \hbar\omega \dod{W}{t} = \frac{4}{3}\frac{\omega^4}{c^3}\abs{\bra{f}\v{d}\ket{i}}^2
+\end{equation}
+when we have a dipole oscillating as $\v{d} \sim e^{i\omega t}\v{d}_0$ (so $\ddot{\v{d}} = \omega^2\v{d}_0$), we can then represent:
+\begin{equation}
+    \dod{I}{t} = \frac{4}{3}\frac{1}{c^3}\abs{\bra{f}\ddot{\v{d}}\ket{i}}^2
+\end{equation}
+If we then identify $\bra{f}\v{d}\ket{i}$ as $\v{d}_{\emph{classical}}$ we see that we have the exact same formula as we would derive in classical physics (where we would integrate the poynting vector over a sphere).
+
+\subsection{Selection Rules}
+Previously when discussing the Stark effect we derived $\bra{f}z\ket{i}$. Noticing that $[L_z, z] = 0$, then:
+\begin{equation}
+    \bra{l', m'}L_zz - zL_z\ket{l, m} = 0
+\end{equation}
+so:
+\begin{equation}
+    (m'-m)\bra{l',m'}z\ket{l,m}.
+\end{equation}
+So the matrix element vanishes unless $m = m'$. Now we generalize this to $x \pm iy$. We have that $[L_z, x\pm iy] = \pm(x \pm iy)$. Going through the same steps:
+\begin{equation}
+    \bra{l',m'}L_z(x+iy) - (x+iy)L_z\ket{l, m} = \bra{l',m'}x+iy\ket{l,m}
+\end{equation}
+so:
+\begin{equation}
+    (m'-m-1)\bra{l',m'}x+iy\ket{l,m} = 0.
+\end{equation}
+So $m' = m + 1$. Of course the $l' = l \pm 1$ selection rule also holds.
