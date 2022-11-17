@@ -47,3 +47,82 @@ Therefore recalling the Berry's phase as:
 \begin{equation}
     \gamma = \oint \v{A} \cdot d\v{R} = \int \v{B} \cdot d\v{a}
 \end{equation}
+and calculating the magnetic field:
+\begin{equation}
+    \v{B} = \nabla \times \v{A} = \rhat \frac{1}{r\sin\theta}\dpd{}{\theta}\left(\frac{\sin\theta A_\phi}{r}\right) = -\frac{\rhat}{r^2}\frac{2\sin\frac{\theta}{2}\cos\frac{\theta}{2}}{\sin\theta}\frac{1}{2} = -\frac{\rhat}{r^2}\frac{1}{2}
+\end{equation}
+Which is the B-field of a magnetic monopole. Therefore computing Berry's phase:
+\begin{equation}
+    \gamma(T) = \int \v{B} \cdot d\v{a} = \int - \frac{1}{2r^2}r^2 d\Omega = -\frac{1}{2}\Omega
+\end{equation}
+where $\Omega$ is the solid angle subtended at the origin. We note that this is consistent with our example of the precessing $\v{B}$-field from last class. We also note again that this result is not dependent at all on the speed at which we move through configuration space.
+
+\subsection{The Aharonov-Bohm Effect}
+In quantum mechanics (unlike in classical electromagnetism), Gauge potentials are physical. As a quick recap, the Hamiltonian with magnetic field was given by:
+\begin{equation}
+    H = \frac{(\v{p} - \frac{e}{c}\v{A})^2}{2m}
+\end{equation} 
+where $\v{A}$ is the Gauge potential. Under the Gauge transformation:
+\begin{equation}
+    \v{A}' = \v{A} + \nabla \Lambda
+\end{equation}
+the effect on the wavefunction is to induce a phase factor:
+\begin{equation}
+    \psi' = e^{i\frac{e}{\hbar c}\Lambda}\psi
+\end{equation}
+
+A clear demonstration of the physical effect of the Gauge potential is the Aharonov-Bohm effect. Consider a solenoid of radius $a$, and we place an charge $q$ on a bead of radius $R$ that goes around the solenoid.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.6]{Images/fig-solenoid.pdf}
+    \caption{Setting of the Aharonov-Bohm effect - we consider a solenoid of radius $a$ and a loop of radius $R$ on which sits a charge $q$. The solenoid extends in the $\pm \zhat$ directions.}
+    \label{fig-solenoid}
+\end{figure}
+
+The flux through the loop is $\Phi = \pi a^2 B$. For $r > a$, the Gauge potential is:
+\begin{equation}
+    A_\phi = \frac{\Phi}{2\pi}\frac{1}{r}\phihat, A_r = 0
+\end{equation}
+and so the magnetic field is:
+\begin{equation}
+    \v{B} = \nabla \times \v{A}
+\end{equation}
+of which the $z$-component is:
+\begin{equation}
+    B_z = \frac{1}{r}\left(\dpd{}{r}(rA_\phi) - \dpd{A_r}{\phi}\right) = 0
+\end{equation}
+so for $r > a$, $\v{B} = 0$. For $r \leq a$, we have:
+\begin{equation}
+    A_\phi = \frac{B\pi r^2}{2\pi a} = \frac{r}{2}B\phihat, \quad B_z = \frac{1}{r}\left(\dpd{}{r}(r^2 B)\right) = B
+\end{equation} 
+
+Returning back to $r > a$, we write:
+\begin{equation}
+    A_\phi = \frac{\Phi}{2\pi}\frac{1}{r}\phihat = \frac{\Phi}{r}\dpd{}{\phi}\left(\frac{\phi}{2\pi}\right)
+\end{equation}
+From here on I totally lose the thread of what's going on, so the notes become less coherent. When are we allowed to say:
+\begin{equation}
+    \v{A} = \nabla \Lambda
+\end{equation}
+and hence under the Gauge transformation $\v{A}' = 0$? The wavefunction is constrained to a single value. Let us write out the Hamiltonian:
+\begin{equation}
+    H = \frac{1}{2m}\left(\v{p} - \frac{e}{c}\v{A}\right)^2 = \frac{1}{2m}\left(-\frac{i\hbar}{R}\dpd{}{\phi} - \frac{e}{c}\frac{\Phi}{2\pi}\frac{1}{R}\right)^2 = \left(-\frac{i\hbar}{R}il - \frac{e\Phi}{2\pi c}\frac{1}{R}\right)
+\end{equation}
+If we find the eigenvalues and eigenstates:
+\begin{equation}
+    E = \frac{\hbar^2}{2mR^2}\left(l - \frac{e\Phi}{2\pi\hbar c}\right)^2
+\end{equation}
+which is very very stange; even though the particle is in a region where the fields are zero, nevertheless the spectrum is affected!
+
+If $\frac{e\Phi}{2\pi \hbar c} = n \in ZZ$, we can write teh above as:
+\begin{equation}
+    E = \frac{\hbar^2}{2mR^2}(l - n)^2
+\end{equation}
+if this condition is not satisfied, we cannot do a gauge transformation - we are not always allowed to gauge transform in QM! (If we assume that we can do this Gauge transformation, then $H = \frac{p^2}{2m}$ with $p_\phi = \frac{i\hbar}{R}\dpd{}{\phi} = \frac{l\phi}{R}$ and $H = \frac{2mR^2}l\phi^2$ so $E = \frac{l}{2mR^2}$ for $l = 0, 1$). The wavefunctions transform as:
+\begin{equation}
+    \psi' = e^{i\frac{e}{\hbar c}\Lambda} = e^{i\frac{e}{\hbar c}\left(\frac{\Phi}{2\pi}\right)}.
+\end{equation}  
+
+Notably - the phase difference manifests itself in the spectrum, and is observable
+
