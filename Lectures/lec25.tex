@@ -1,0 +1,152 @@
+\section{Scattering}
+We continue the scattering topic; let us start by writing down the formula we derived. We started with Fermi's golden rule, and got to:
+\begin{equation}
+    \dod{W}{t} = \frac{2\pi}{\hbar}\frac{1}{(2\pi\hbar)^2}\frac{m\abs{p_i}d\Omega_f}{V}\abs{\tilde{U}(q)}^2
+\end{equation}
+where:
+\begin{equation}
+    \tilde{U}(q) = \int V(r) e^{-i\v{q} \cdot \v{r}}d^3r 
+\end{equation}
+where $\v{q} = \frac{\v{p}_f - \v{p}_i}{\hbar}$. The only element from the interaction is in the Fourier transform. This is what is known as the \emph{First Born approximation}.
+
+\subsection{Cross-Section}
+The next step is the following - we define a probability divided by the current of the incoming flux:
+\begin{equation}
+    d\sigma = \frac{\dod{W}{t}}{j}
+\end{equation}
+and this has the effect of allowing us to remove the normalization coming from the number of incoming particles - the above formula can be interpreted as the number of scattered particles divided by $j = $ the number of incoming particles per second per surface area. What is the dimensionality of $d\sigma$?
+
+\begin{equation}
+    [d\sigma] = \frac{N/s}{N/s/a^2} \sim a^2
+\end{equation}
+
+so $d\sigma$ has dimensionality of area. This is why it is called the cross section.
+
+\subsection{Defining the quantum-mechanical current}
+In classical mechanics, the current is simply:
+\begin{equation}
+    \v{j} = n\v{v}
+\end{equation}
+and this has dimensionality of $\sim \frac{1}{\si{cm}^3} \cdot \frac{\si{cm}}{s} = \frac{1}{\si{cm^2.s}}$. In quantum mechanics, we have:
+\begin{equation}
+    \v{j} = \frac{\hbar}{2mi}\left(\psi^* \nabla \psi - \psi \nabla \psi^*\right)
+\end{equation}
+where $\psi = \frac{e^{i\v{p} \cdot \v{r}}}{\sqrt{V}}$. We do the computations, and we get:
+\begin{equation}
+    \v{j} = \frac{\hbar}{2mi}\frac{i\v{p}}{\hbar}2 = \frac{\v{p}}{m} = \frac{\v{v}}{V}
+\end{equation}
+just as expected. So substituting this in:
+\begin{equation}
+    d\sigma = \frac{\dod{W}{t}}{j} = \frac{2\pi}{\hbar}\frac{V}{(2\pi\hbar)^3}\frac{m\abs{p_i}d\Omega_f}{V\abs{p_i}}\abs{\tilde{U}(q)}^2 = \frac{2\pi}{\hbar}\frac{1}{(2\pi\hbar)^3}m^2d\Omega_f \abs{\tilde{U}(q)}^2
+\end{equation}
+so writing:
+\begin{equation}
+    d\sigma = \abs{f}^2d\Omega_f, \quad \abs{f} = \frac{m}{(2\pi)\hbar^2}\abs{\tilde{U}(q)}
+\end{equation}
+
+Let us discuss when this formula is justified, and let us discuss some basic features. Let's check that our amplitude has the right dimensionality:
+\begin{equation}
+    [\abs{f}] = [\frac{m}{\hbar}\abs{U(q)}] = [\frac{m}{\hbar^2}][\tilde{U}]
+\end{equation}
+We recall that $\frac{p^2}{2m} = \frac{\hbar^2}{a^2m}$ has units of energy, and $\tilde{U}$ has dimensions of energy times volume (as it is the FT of a potential), so then:
+\begin{equation}
+    [\abs{f}] = \frac{\text{energy} a^3}{a^2\text{energy}} = a
+\end{equation}
+as expected.
+
+\subsection{Low energy scattering}
+Consider the $qa \ll 1$ limit. Then:
+\begin{equation}
+    \tilde{U}(q) = \int e^{-i\v{q} \cdot \v{r}}V(r)d^3r \cong U_0 \frac{4\pi}{3}a^3
+\end{equation}
+So then:
+\begin{equation}
+    \abs{f} = \frac{m}{2\pi\hbar^2}\abs{U_0}\frac{4\pi}{3}a^3 = \frac{2m}{2\hbar^2}(\abs{U_0}a^2)
+\end{equation}
+what is the physical meaning here (and when it the approximation justified?) Let us separate the above into two pieces:
+\begin{equation}
+    \abs{f} = \frac{2}{3}\left(\frac{m\abs{U_0}a^2}{\hbar^2}\right)a
+\end{equation}
+the term in brackets is dimensionless (product of inverse kinetic energy of incoming particle and the potential). The approximation is justified in the limit:
+\begin{equation}
+    \frac{m\abs{U_0}}{\hbar}a^2 \ll 1
+\end{equation}
+so:
+\begin{equation}
+    \frac{\abs{f}}{a} \ll 1
+\end{equation}
+In analogy, we recall the approximating limit $\dod{W}{t} \ll \omega$.
+
+In quantum mechancis, something strange happens - in classical mechanics the cross section is $\pi a^2$, here the cross section is much much smaller - so most of the time the particles will not collide! 
+
+The most important features to takeaway here in the low energy, first order perturbation (weak coupling) case:
+\begin{enumerate}
+    \item $d\sigma \sim d\Omega$, i.e. the distribution is spherically symmetric!
+    \item No dependence on the sign of $U_0$. 
+    \item $\frac{mU_0 a^2}{\hbar^2} \ll 1$. This is a feature that tells us that there is no bound state (in three dimensions).
+\end{enumerate}
+
+\subsection{The Yukawa Potential}
+
+Note that we will now treat the signs/phases properly, so we define:
+\begin{equation}
+    f = -\frac{m}{2\pi\hbar^2}\int V(r) e^{-i\v{q} \cdot \v{r}}d^3r = -\frac{m}{2\pi\hbar^2}\tilde{U}(q)
+\end{equation}
+note the minus sign! This is very important - we will see why soon. We consider the Yukawa potential:
+\begin{equation}
+    V(r) = \beta\frac{e^{-\mu r}}{r}
+\end{equation}
+This describes many things. It describes the hydrogen atom with screening (with $\mu \sim \frac{1}{a_B}$, $\beta = e^2$). But the name comes from something different. It comes from nuclear physics - the interactions of protons and neutrons is described by the above, where at large distances we have no strong interactions, and at short distances we have a Coulomb type potential. We want to compute the FT of this, and compute the cross section. We will see an absolutely unbelievable result.
+\begin{equation}
+    \begin{split}
+        \tilde{U}(q) &= \beta \int \frac{e^{-\mu r}}{r}e^{-i\v{q} \cdot \v{r}}d^3 r 
+        \\ &= \beta \int \frac{e^{-\mu r}}{r}e^{-iqr}r^2 dr \sin\theta d\theta d\phi  
+        \\ &= 2\pi \beta \int (e^{-\mu r - i q r \cos\theta})rdrd\cos\theta 
+        \\ &= 2\pi\beta \int \frac{rdr }{-iqr}\left[e^{-iqr - \mu r} - e^{iqr - \mu r}\right]dr
+        \\ &= \frac{2\pi\beta}{-iq}\left(\frac{1}{\mu + iq} - \frac{1}{\mu - iq}\right) 
+        \\ &= \frac{4\pi\beta}{\mu^2 + q^2}
+    \end{split}
+\end{equation}
+So:
+\begin{equation}
+    f = -\frac{m}{2\pi\hbar^2}\frac{4\pi\beta}{\mu^2 + q^2} = \frac{2\beta m}{(\mu^2 + q^2)\hbar^2}
+\end{equation}
+note we have a huge dependence on the angles! Consider:
+\begin{equation}
+    \v{q}^2 = \frac{(\v{p}_f - \v{p}_i)^2}{\hbar^2} = \frac{2\abs{\v{p}^2}(1-\cos\theta_f)}{\hbar^2} = \frac{4\abs{\v{p}}^2}{\hbar^2}\sin^2\frac{\theta_f}{2}
+\end{equation}
+Now using that $\frac{p^2}{2m} = E$, we find:
+\begin{equation}
+    \v{q}^2 = \frac{8mE}{\hbar^2}\sin^2\frac{\theta}{2}
+\end{equation}
+so we conclude:
+\begin{equation}
+    \dod{\sigma}{\Omega} = \abs{f}^2 = \frac{4m^2\beta^2}{(\mu^2 + q^2)^2}\frac{1}{\hbar^4}
+\end{equation}
+In the low-energy limit, $q \to 0$ and so:
+\begin{equation}
+    \dod{\sigma}{\Omega} = \frac{4m^2\beta^2}{\hbar^4\mu^4} = \frac{4m^2\beta^2}{\hbar^4\mu^2}\frac{1}{\mu^2}
+\end{equation}
+as expected, it is spherically symmetric. There is no bound states where this formula is justified - $\sigma \ll \frac{1}{\mu^2}$ (note the dimensionality checks out here). Then:
+\begin{equation}
+    \frac{m^2\beta^2}{\hbar^4\mu^2} \ll 1
+\end{equation}
+which is the condition. For an atomic system, $\mu \sim a_B^{-1}$, so this condition implies:
+\begin{equation}
+    \frac{me^2}{\hbar^2 \frac{me^2}{\hbar^2}} = 1 
+\end{equation}
+so for atomic physics... $1 \ll 1$. This is NONSENSE! This limit is never valid. Because in atomic physics, the potential is sufficiently strong, and we have bound states... 
+
+The high-energy limit of $E \to \infty$, we have:
+\begin{equation}
+    \dod{\sigma}{\Omega} = \frac{\beta^2m^2}{q^4\hbar^4} \ll \frac{1}{\mu^2}
+\end{equation}
+this is justified if it is much smaller than $\frac{1}{\mu^2}$. This of course works out, because for sufficiently large energy $\frac{1}{q^4} \sim \frac{1}{E^4} \ll \frac{1}{\mu^2}$ of course! And this is very, very useful for QFT. 
+
+Why is it never justified for small energy, and for large energy it is not? When energy is high, interactions are for such short times that there are not much interactions at all. Interactions are small. Perturbation theory is justified because scattering amplitudes is small. Mathematically, we expand in inverse energy so the PT works. For low energy the interaction time is large so we are not in the PT regime.
+
+Last remark: if we expand out:
+\begin{equation}
+    \dod{\sigma}{\Omega} = \frac{m^2\beta^2}{16E^2 \sin^4\frac{\theta}{2}} = \frac{m^2 e^2}{16E^2 \sin^4\frac{\theta}{2}}
+\end{equation}
+which is just the Rutherford scattering formula! You have derived this in CM, we now compute it in QM, and in QFT we actually get the same result as well.
