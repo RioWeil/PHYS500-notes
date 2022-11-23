@@ -1,0 +1,117 @@
+\section{Scattering Part II}
+We did some examples of scattering last day. We did it using perturbation theory, and this PT is justified when the cross-section is much smaller than the size of the system. It is justified for sufficiently large energy, as in this case the particle does not have time to interact and hence the cross section is much smaller. The second realization was that PT is useless for atomic systems, for the same reason.
+
+Today, we want to discuss the tools to study the orders of PT in scattering in an absolutely mathematically precise way. After that we can formulate when PT is justified.
+
+\subsection{Wavefunction at Large Distances - No Potential}
+We start with the infinitesimal probability of scattering:
+\begin{equation}
+    dP = \abs{\psi_{\text{scat}}}^2 vdt dS
+\end{equation}
+Everything happens at large distances - the detector is far away from the system, so $r \gg a$. And this is where we actually measure the particle. We want to find the wavefunction at very large distances $r \to \infty$. It is the solution to the SE at large distances. The claim is the following:
+\begin{equation}
+    \psi(r \to \infty) = \frac{e^{ikr}}{r}f(\theta, \phi)
+\end{equation}
+With $f$ the scattering amplitude. Let's verify that this is the correct form:
+\begin{equation}
+    \left[-\frac{\hbar^2}{2m}\nabla^2 + \frac{l(l+1)}{r^2} + U(r)\right] \psi = E\psi
+\end{equation}
+but then the $\frac{1}{r^2}, U(r)$ terms are small (the second by assumption), so:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\nabla^2 \psi = E\psi
+\end{equation}
+so framing $\psi = \frac{u(r)}{r}$, we get the equation:
+\begin{equation}
+    \dod[2]{u}{r} + k^2 u = 0
+\end{equation}
+with $k^2 = \frac{2mE}{\hbar}$. We then have two solutions $u(r) = e^{\pm ikr}$, but we only take the $+$ solution as we only consider outgoing waves.
+
+\subsection{Wavefunction at Large Distances - With Potential}
+
+Now, let's consider the case where we have a potential:
+\begin{equation}
+    \left[-\frac{\hbar^2}{2m}\nabla^2 + V(r)\right]\psi = E\psi
+\end{equation}
+So then:
+\begin{equation}
+    (\Delta + k^2)\psi = \frac{2mV(r)}{\hbar^2}\psi
+\end{equation}
+which is the Helmholtz equation (note $\Delta = \nabla^2$). To solve such equations, we introduce Green functions:
+\begin{equation}
+    (\Delta + k^2)G(r - r') = \delta^3(\v{r} - \v{r}')
+\end{equation}
+where $G(r)$ is any function that solves the above equation. If it is, we can write:
+\begin{equation}
+    \psi(r) = \psi_0(r) + \int G(r - r')\frac{2mV(r')}{\hbar^2}\psi(r')d^3r'
+\end{equation}
+which is the SE in the integral form (it is \emph{not} immediately a solution - as $\psi$ appears on both sides).
+Now applying the $\Delta + k^2$ operator to both sides:
+\begin{equation}
+    (\Delta + k^2)\psi(r) = \int (\nabla^2_r + k^2)G(r - r') \frac{2mV(r')}{\hbar^2}\psi(r')d^3r'
+\end{equation}
+but on the RHS we have a delta function by the defintion of the Green function, so:
+\begin{equation}
+    (\Delta + k^2)\psi(r) = \int \delta^3(\v{r} - \v{r}') \frac{2mV(r')}{\hbar^2}\psi(r')d^3r' = \frac{2mV(r)}{\hbar^2}\psi(r)
+\end{equation}
+
+Ok, so we now have an integral formulation of the Schrodinger equation - this might seem like a step backwards because its more complicated in the differential form, and in general integral equations are harder to solve than differential ones. However it turns out to be a more convenient form because we can treat it in perturbation theory.
+
+\subsection{Solving for the Green Function}
+We solve:
+\begin{equation}
+    (\nabla^2 + k^2)G(r) = \delta^3(\v{r})
+\end{equation}
+if $k^2 = 0$, then:
+\begin{equation}
+    \nabla^2 G(r) = \delta^3(\v{r})
+\end{equation}
+which is trivial if we just recall E\&M and the relaiton of a scalar field and electric field. Then $G(r) = -\frac{1}{4\pi}\frac{1}{r}$. The minus sign means a positive charge (potential is negative, electric field is that of a positive charge/points outwards).
+
+Ok, now what happens when we have the $k^2$? Everything is the same, just include a factor of $e^{ikr}$ (do the same solving procedure as we did for the SE):
+\begin{equation}
+    G(r) = -\frac{1}{4\pi}\frac{e^{ikr}}{r}
+\end{equation}
+So:
+\begin{equation}
+    G(\v{r} - \v{r}') = -\frac{e^{ik\abs{\v{r} - \v{r}'}}}{4\pi\abs{\v{r} - \v{r}'}}
+\end{equation}
+So the integral form of the SE becomes:
+\begin{equation}
+    \psi(r) = \psi_0(r) - \int \frac{e^{ik\abs{\v{r} - \v{r}'}}}{4\pi\abs{\v{r} - \v{r}'}} \frac{2mV(r')}{\hbar^2}\psi(r')d^3r'
+\end{equation}
+note that the boundary condition needed to solve for the Green function enters through the $+$ sign in the exponential.
+
+\subsection{Solving the Integral SE via Approximation}
+Let's treat $V$ as small, so replace $\psi(r') \to \psi_0(r')$ under the integral. Further, $\abs{\v{r}} \gg \abs{\v{r}'}$. So, let us expand:
+\begin{equation}
+    \abs{\v{r} - \v{r}'}^2 = r^2 + r'^2 - -2\v{r} \cdot \v{r}'  = r^2\left(1 + \frac{r'^2}{r^2} - \frac{2\v{r} \cdot \v{r}'}{r^2}\right)
+\end{equation}
+We actually need $\abs{\v{r} - \v{r}'}$ so taking square roots:
+\begin{equation}
+    \abs{\v{r} - \v{r}'} = r\left(1 + \frac{r'^2}{r^2} - \frac{2\v{r}\cdot\v{r}'}{r^2}\right)^{1/2}
+\end{equation}
+now using $(1+x)^{1/2} \approx 1 + \frac{1}{2}x$:
+\begin{equation}
+    \abs{\v{r} - \v{r}'} \approx r\left(1 - 2\frac{1}{2}\frac{\v{r} \cdot \v{r}'}{r^2}\right) = r - \hat{\v{n}} \cdot \v{r}'
+\end{equation}
+where $\hat{\v{n}} = \frac{\v{r}}{r}$. So, we do this approximation for the exponent. But, do we have to do the same for the $\frac{1}{\abs{\v{r} - \v{r}'}}$? No - we can just ignore the $\frac{1}{r^2}$ (as these are unimportant in the asymptotic limit we are interested in).
+
+We then have:
+\begin{equation}
+    G(\v{r} - \v{r}') = - \frac{e^{ikr}}{4\pi r}e^{-ik\v{n} \cdot \v{r}'}
+\end{equation}
+So, let us put this back in:
+\begin{equation}
+    \psi(r) = \psi_0(r) - \frac{e^{ikr}}{r4\pi} \int e^{-ik\hat{\v{n}} \cdot \v{r}'} \frac{2mV(r')}{\hbar^2}\psi_0(r')d^3r'
+\end{equation}
+Note that $k\v{n}$ is nothing but the outgoing momentum of the particle, so let us define $k\v{n} = \v{k}_f$. We also replace $\psi_0(r)$ with the incoming wave:
+\begin{equation}
+    \psi(r) = \psi_0(r) - \frac{e^{ikr}}{r4\pi} \int e^{-i\v{k}_f \cdot \v{r}'} \frac{2mV(r')}{\hbar^2}e^{i\v{k}_i \cdot \v{r}'}d^3r'
+\end{equation}
+so we have an incoming and outgoing wave in the integral, and integrate over the potential - we also have an $\frac{e^{ikr}}{r}$ outside of it.
+
+Now, recall that we wanted something of the form $\psi = f(\theta, \phi) \frac{e^{ikr}}{r}$ with $f$ the amplitude. The amplitude is therefore:
+\begin{equation}
+    f(\theta, \phi) = -\frac{2m}{4\pi\hbar^2}\int e^{-i\v{q} \cdot \v{r}'}V(r')d^3r'
+\end{equation}
+where $\v{q} = \v{k}_f - \v{k}_i$ is the momentum transfer. This is exactly what we derived previously from Fermi's golden rule! It is an absolutely correct formula for first order perturabation theory.
