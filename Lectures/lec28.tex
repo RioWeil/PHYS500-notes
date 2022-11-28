@@ -1,0 +1,107 @@
+\section{Partial Wave Analysis}
+
+\subsection{Review of Scattering so far}
+Previously we used perturbation theory and the Born approximation to study scattering approximately. We found then that $f$ was a real function, there was no dependence on the sign of the potential $V$ (the cross section etc. are completely unchanged by repulsive vs. attractive)!
+
+We also discussed low energy scattering - what we realized was that our perturbation theory is absolutely justified for small potentials (not bound states). E.g. in QED, the coupling constant is small so PT works beautifully. But once we try to study bound states, PT fails.
+
+For high energy scattering - PT is always justified for arbitrary potentials. Even if the potential is large, PT works as long as your system is sufficiently high energy. We derived specific conditions.
+
+In atomic physics, this means the following: we use PT if the velocity of the incoming particles is larger than the internal velocity:
+\begin{equation}
+    \frac{mv^2}{2} \sim \frac{me^4}{\hbar^2} \to \left(\frac{v}{c}\right)^2 = \alpha^2
+\end{equation}
+so $v_{int} \sim c \alpha$; so so long as $v_{ext} \gg \alpha c$, the PT is nicely justified.
+
+For today, we study scattering using a method such that we are sensitive to the bound states.
+
+\subsection{Asymptotic Expansions}
+We consider:
+\begin{equation}
+    \psi(r, \theta, \phi) = R_{E, l}(r)Y_l^m(\theta, \phi)
+\end{equation}
+which are the solutions to a spherically symmetric potential.
+
+\subsubsection{Free Particle Case}
+Defining $u = Rr$ and $k^2 = \frac{2mE}{\hbar^2}$, in the case for $V = 0$ (free particle) we have:
+\begin{equation}
+    \dod[2]{u}{r} - \frac{l(l+1)}{r^2}u = -k^2 u
+\end{equation}
+In the $r \to \infty$ limit, the radial part of the wavefunctions asymptotically tend to Bessel functions:
+\begin{equation}
+    R_l(kr) \sim j_l(kr)
+\end{equation}
+where:
+\begin{equation}
+    j_l(kr \to \infty) \sim \frac{1}{kr}\left[\sin(kr - \frac{l\pi}{2})\right] = \frac{1}{kr}\left(e^{-i(kr - \frac{l\pi}{2})} - e^{i(kr - \frac{l\pi}{2})}\right)
+\end{equation}
+
+\subsubsection{Quickly Decaying Potential}
+Now, let's assume a nonzero potential, but $V \leq \frac{1}{r^2}$ for $r \to \infty$. What happens then? The asymptotic behavior is like:
+\begin{equation}
+    \sim \frac{1}{kr}\left(e^{-i(kr - \frac{l\pi}{2})} - S_le^{i(kr - \frac{l\pi}{2})}\right)
+\end{equation}
+where:
+\begin{equation}
+    S_l = e^{i2\delta_l}
+\end{equation}
+this is because a quickly decaying potential does not affect the asymptotic behaviour of the wavefunction for a quickly decaying potential! Note that we only put a phase on one of the terms (of course a global phase would be irrelevant) - by convention we put the phase on the outgoing spherical phase.
+
+\subsection{Expansion in Radial and Spherical Harmonics}
+By the completness of the spherical harmonics and the radial wavefunctions, we can expand:
+\begin{equation}
+    \psi(r, \theta, \phi) = \sum_{lm}c_{lm}R_l(r)Y_{l}^m(\theta, \phi)
+\end{equation}
+we will be interested in this expansion in the asymptotic limit. A plane wave (for the case $V = 0$) can be expanded as:
+\begin{equation}
+    e^{i\v{k}\cdot\v{r}} = \frac{i}{2k}\sum_l(2l+1)i^l \left[\frac{e^{-i(kr - \frac{l\pi}{2})}}{r} - \frac{e^{i(kr - \frac{l\pi}{2})}}{r}\right]P_l(\cos\theta)
+\end{equation}
+where $P_l$ is the Legendre polynomial. The first term is the incoming spherical wave, and the second term is the outgoing spherical wave. Note also the lack of $\phi$-dependence, as the potential is spherically symmetric
+
+Now, if I introduce a nonzero potential, my claim is the following: everything is the same, except for one part:
+\begin{equation}
+    \psi(r, \theta) = \frac{i}{2k}\sum_l (2l + 1)i^l\left(\frac{e^{-i(kr - \frac{l\pi}{2})}}{r} - S_l \frac{e^{i(kr - \frac{l\pi}{2})}}{r}\right)P_l(\cos\theta)
+\end{equation}
+Again, the phase enters the problem.
+
+Now we derive a formula - this is boring but we must go through the technical details to get somewhere here\footnote{``This class is very boring'' - Ariel. ``This class or this course?'' - Christopher ``Yeah, you can say that if you want.'' - Ariel}
+
+Let us write $S_l = (S_l - 1) + 1$. When $S_l = 1$, we have precisely the plane wave! So, let us rewrite the above expression to be the sum of a plane wave and another term.
+\begin{equation}
+    \psi(r) = e^{i\v{k} \cdot \v{r}} + \frac{e^{ikr}}{r}\sum_l \frac{1}{2ik}(S_l - 1)(2l + 1)P_l(\cos\theta)
+\end{equation}
+where we note the use of the identity $i^{l+1}e^{-i\frac{l\pi}{2}} = e^{i\frac{\pi}{2}(l+1)}e^{-i\frac{\pi}{2}} = i$. 
+
+Now, by definition my amplitude is nothing but:
+\begin{equation}
+    f(\theta) = \sum_l \frac{1}{2ik}(S_l-1)(2l+1)P_l(\cos\theta)
+\end{equation}
+So I have my amplitude! We have made no approximations. The entire problem of scattering has reduced to the computation of the phases $S_l$. 
+
+\subsection{Introducing the Partial Wave}
+We introduce:
+\begin{equation}
+    f_l = \frac{S_l - 1}{2ik} = \frac{e^{i2\delta_l} - 1}{2ik} = \frac{e^{i\delta e}}{k}\frac{(e^{i\delta_l} - e^{-i\delta_l})}{2i} = \frac{e^{i\delta_l}\sin(\delta_l)}{k}
+\end{equation}
+We need one more formula. Our amplitude can be represented as the sum of the partial waves as:
+\begin{equation}
+    f(\theta) = \sum_l \frac{e^{i\delta_l}}{k}\sin(\delta_l)P_l(\cos\theta)(2l+1) = \sum_l f_l P_l(\cos\theta)(2l+1)
+\end{equation}
+Repeating the claim - the scattering amplitude can be expressed as the sum of partial waves amplitudes. What people do in practice is the following. People study the angular distribution, given by specific Legendre polynomials. Then, having probed what resonance contributes the most, one can make conclusions about the angular momentum of the system. In the literature often $s,p,d$ waves are discussed; these correspond to $l = 0,1,2$ as in the case of spectroscopy. 
+
+Let us derive one more formula- that for the total cross section:
+\begin{equation}
+    \begin{split}
+        \sigma &= \int d\Omega \abs{f}^2
+        \\ &= \sum_{l,l'}\int d\Omega \frac{\sin(\delta_l)(2l+1)}{k}P_l(\cos\theta) \frac{\sin(\delta_l')}{k}(2l'+1)P_l'(\cos\theta)
+    \end{split} 
+\end{equation}
+Then using the orthogonality relation:
+\begin{equation}
+    \int d\Omega P_l(\cos\theta)P_{l'}(\cos\theta) = \frac{4\pi}{2l+1}\delta_{ll'}
+\end{equation}
+the complicated looking formula reduces:
+\begin{equation}
+    \sigma = \sum_l \frac{4\pi}{k^2}\sin^2(\delta_l) k(2l+1) = 4\pi \sum_l (2l+1)\abs{f_l}^2 
+\end{equation}
+with $f_l = \frac{e^{i\delta_l(k)}}{k}\sin(\delta_l(k))$ where $k = \frac{2mE}{\hbar^2}$ is determined by the energy. This formula is exact and extremely useful for atomic, molecular etc. physics. We will explore it next time, and see how this phase plays an unbelievably interesting role.
